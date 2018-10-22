@@ -14,12 +14,14 @@
     "target": "es5"
   },
   "include": [
-    "src/**/*.ts"
+    "src/**/*",
+    // this does not work so the file needs to be manualy deleted from the libs folder
+    // ".node_modules/json-typescript-mapper/libs/utils.ts"
   ],
   "exclude": [
     "node_modules",
     "src/**/*.spec.ts",
-    "src/**/__tests__/*.ts"
+    "src/**/__tests__/*.ts",
   ],
   "compileOnSave": false,
   "atom": {

@@ -9,6 +9,7 @@ import {
 export const json = { workouts: [{
         'id': 1,
         'name': 'ABC + Full Body Option 1 *',
+        'description': '4 days including upper, lower and core muscles',
         'days': [
             {
                 'id': 4,
@@ -1232,6 +1233,7 @@ export const json = { workouts: [{
         ]
     }, {
        'id': 2,
-       'name': 'default empty workout!' 
+       'name': 'default empty workout!' ,
+       'description': 'this is the description of the workout and should not be too long...'
     }]
 }

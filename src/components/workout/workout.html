@@ -1,0 +1,17 @@
+
+<ion-card>
+  <ion-card-header>
+    {{ workout.name | uppercase }}
+  </ion-card-header>
+
+  <ion-card-content>
+    <div text-wrap>{{ workout.description }}</div>
+  </ion-card-content>
+  <ion-item>
+    <ion-icon name='calendar' item-start style="color: blue"></ion-icon>
+    Days
+    <ion-badge item-end>{{ workout.days?.length }}</ion-badge>
+  </ion-item>
+
+</ion-card>
+

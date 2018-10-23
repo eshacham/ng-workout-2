@@ -7,6 +7,9 @@ export class Workout {
     
     @JsonProperty('name')
     name: string;
+    
+    @JsonProperty('description')
+    description: string;
 
     @JsonProperty({clazz: WorkoutDay, name: 'days'})
     days: WorkoutDay[];
@@ -14,6 +17,7 @@ export class Workout {
     constructor() {
         this.id = void 0;
         this.name = void 0;
+        this.description = void 0
         this.days = void 0;
     }
 }

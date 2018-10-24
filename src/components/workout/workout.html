@@ -1,5 +1,5 @@
 
-<ion-card>
+<ion-card >
   <ion-card-header>
     {{ workout.name | uppercase }}
   </ion-card-header>
@@ -8,9 +8,11 @@
     <div text-wrap>{{ workout.description }}</div>
   </ion-card-content>
   <ion-item>
-    <ion-icon name='calendar' item-start style="color: blue"></ion-icon>
-    Days
-    <ion-badge item-end>{{ workout.days?.length }}</ion-badge>
+    <a (click)="goToWorkoutDays()">
+      <ion-icon name='calendar' item-start color="primary"></ion-icon>
+      Days
+      <ion-badge item-end>{{ workout.days?.length }}</ion-badge>
+    </a>
   </ion-item>
 
 </ion-card>

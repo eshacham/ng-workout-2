@@ -13,6 +13,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { IonicStorageModule } from '@ionic/storage';
+import { WorkoutdaysPageModule } from '../pages/workoutdays/workoutdays.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { IonicStorageModule } from '@ionic/storage';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
-    ComponentsModule
+    ComponentsModule,
+    WorkoutdaysPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -34,13 +36,12 @@ import { IonicStorageModule } from '@ionic/storage';
     LibraryPage,
     SettingsPage,
     WorkoutsPage,
-    TabsPage
+    TabsPage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-
   ]
 })
 export class AppModule {}

@@ -7,7 +7,6 @@ import { deserialize } from 'json-typescript-mapper';
 import { Workout } from '../../shared/model/Workout';
 
 @Component({
-  selector: 'page-workouts',
   templateUrl: 'workouts.html'
 })
 export class WorkoutsPage implements OnInit {

@@ -4,7 +4,6 @@ import { Workout } from '../../shared/model/Workout';
 
 @IonicPage()
 @Component({
-  selector: 'page-workoutdays',
   templateUrl: 'workoutdays.html',
 })
 export class WorkoutdaysPage {

@@ -4,15 +4,16 @@
   </ion-card-header>
 
   <ion-card-content>
-    <div text-wrap>{{ workout.description }}</div>
-  </ion-card-content>
-  <ion-item>
-    <a (click)="goToWorkoutDays()">
-      <ion-icon name='calendar' item-start color="primary"></ion-icon>
-      Days
-      <ion-badge item-end>{{ workout.days?.length }}</ion-badge>
-    </a>
-  </ion-item>
+    <p text-wrap>{{ workout.description }}</p>
+  
+    <ion-item>
+      <a (click)="goToWorkoutDays()">
+        <ion-icon name='calendar' item-start color="primary"></ion-icon>
+        Days
+        <ion-badge item-end>{{ workout.days?.length }}</ion-badge>
+      </a>
+    </ion-item>
 
+  </ion-card-content>
 </ion-card>
 

@@ -1,5 +1,14 @@
-workout {
-    a {
-        cursor: pointer;
+workout-card {
+    ion-card {
+        background: yellowgreen!important;
+        p {
+            color: brown!important;
+        }
+        a {
+            cursor: pointer!important;
+        }
+        ion-item {
+            background: yellowgreen!important;
+        }
     }
 }

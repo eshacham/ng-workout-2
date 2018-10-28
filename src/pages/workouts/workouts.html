@@ -6,7 +6,7 @@
 
 <ion-content padding>
   <ion-list no-lines>
-    <ion-item *ngFor="let workout of workouts || async">
+    <ion-item *ngFor="let workout of workouts">
       <workout-card [workout]="workout"></workout-card>
     </ion-item>
   </ion-list>

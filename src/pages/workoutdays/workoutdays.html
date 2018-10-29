@@ -5,10 +5,11 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list no-lines>
-    <ion-item *ngFor="let day of workout.days">
-      <workout-day [workoutDay]="day" >
-      </workout-day>
-    </ion-item>
-  </ion-list>
+  <ion-slides [pager]='true' [paginationType]='bullets'>
+
+    <ion-slide *ngFor="let day of workout.days">
+      <workout-day [workoutDay]="day" ></workout-day>
+    </ion-slide>
+
+  </ion-slides>
 </ion-content>

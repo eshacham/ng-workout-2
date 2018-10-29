@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { WorkoutdaysPage } from './workoutdays';
+import { WorkoutdaysPage } from './workout-days';
 import { WorkoutDayComponent } from '../../components/workout-day/workout-day';
 
 @NgModule({

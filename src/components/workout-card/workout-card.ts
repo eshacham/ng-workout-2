@@ -1,13 +1,13 @@
-import { WorkoutdaysPage } from './../../pages/workoutdays/workoutdays';
+import { WorkoutdaysPage } from '../../pages/workoutdays/workoutdays';
 import { Component, Input } from '@angular/core';
 import { Workout } from '../../shared/model/Workout';
 import { NavController } from 'ionic-angular';
 
 @Component({
   selector: 'workout-card',
-  templateUrl: 'workout.html'
+  templateUrl: 'workout-card.html'
 })
-export class WorkoutComponent {
+export class WorkoutCardComponent {
 
   @Input('workout') workout: Workout;
 

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { ComponentsModule } from './../../components/components.module';
 import { WorkoutsPage } from './workouts';
 import { WorkoutdaysPageModule } from '../workoutdays/workoutdays.module';
+import { WorkoutCardModule } from '../../components/workout-card/workout-card.module';
 
 @NgModule({
 	declarations: [		
@@ -10,7 +10,7 @@ import { WorkoutdaysPageModule } from '../workoutdays/workoutdays.module';
 	],
 	imports: [
 		IonicPageModule.forChild(WorkoutsPage),
-		ComponentsModule,
+		WorkoutCardModule,
 		WorkoutdaysPageModule
 	],
 	exports: [

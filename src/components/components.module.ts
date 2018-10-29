@@ -11,6 +11,9 @@ import { IonicPageModule } from 'ionic-angular';
 	],
 	exports: [
 		WorkoutComponent,
+	],
+	entryComponents: [
+		WorkoutComponent
 	]
 })
 export class ComponentsModule {}

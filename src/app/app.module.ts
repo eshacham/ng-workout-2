@@ -8,33 +8,28 @@ import { IonicStorageModule } from '@ionic/storage';
 import { MyApp } from './app.component';
 import { LibraryPage } from '../pages/library/library';
 import { SettingsPage } from '../pages/settings/settings';
-import { WorkoutsPage } from '../pages/workouts/workouts';
 import { TabsPage } from '../pages/tabs/tabs';
 
-import { ComponentsModule } from './../components/components.module';
-import { WorkoutdaysPageModule } from '../pages/workoutdays/workoutdays.module';
+import { WorkoutsPageModule } from '../pages/workouts/workouts-page.module'
 
 @NgModule({
   declarations: [
     MyApp,
     LibraryPage,
     SettingsPage,
-    WorkoutsPage,
     TabsPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
-    WorkoutdaysPageModule,
-    ComponentsModule,
+    WorkoutsPageModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     LibraryPage,
     SettingsPage,
-    WorkoutsPage,
     TabsPage,
   ],
   providers: [

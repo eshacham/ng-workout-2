@@ -10,9 +10,10 @@ import { WorkoutDayComponent } from '../../components/workout-day/workout-day';
   ],
   imports: [
     IonicPageModule.forChild(WorkoutdaysPage),
-    IonicPageModule.forChild(WorkoutDayComponent),
   ],
   entryComponents: [
+    WorkoutdaysPage, 
+    WorkoutDayComponent
   ]
 })
 export class WorkoutdaysPageModule {}

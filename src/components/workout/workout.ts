@@ -17,4 +17,9 @@ export class WorkoutComponent {
   goToWorkoutDays () {
     this.navCtrl.push(WorkoutdaysPage, { workout: this.workout} );
   }
+
+  get daysCount(): number {
+    return (this.workout.days) ? this.workout.days.length : 0;
+  }
+
 }

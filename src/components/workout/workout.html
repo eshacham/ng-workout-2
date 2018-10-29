@@ -6,11 +6,11 @@
   <ion-card-content>
     <p text-wrap>{{ workout.description }}</p>
   
-    <ion-item>
+    <ion-item *ngIf="daysCount">
       <a (click)="goToWorkoutDays()">
         <ion-icon name='calendar' item-start color="primary"></ion-icon>
         Days
-        <ion-badge item-end>{{ workout.days?.length }}</ion-badge>
+        <ion-badge item-end>{{ daysCount }}</ion-badge>
       </a>
     </ion-item>
 

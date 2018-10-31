@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { WorkoutsPage } from './workouts';
-import { WorkoutdaysPageModule } from '../workoutdays/workoutdays.module';
+import { WorkoutdaysPageModule } from '../workout-days/workout-days.module';
 import { WorkoutCardModule } from '../../components/workout-card/workout-card.module';
 
 @NgModule({

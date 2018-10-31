@@ -1,4 +1,4 @@
-import { WorkoutdaysPage } from '../../pages/workoutdays/workoutdays';
+import { WorkoutdaysPage } from '../../pages/workout-days/workout-days';
 import { Component, Input } from '@angular/core';
 import { Workout } from '../../shared/model/Workout';
 import { NavController } from 'ionic-angular';

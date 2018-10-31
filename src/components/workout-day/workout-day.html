@@ -1,8 +1,26 @@
 <div>
-  {{ workoutDay.name }}
-  <ion-list no-lines>
-      <ion-item *ngFor="let exercise of workoutDay.exercises">
-        <exercise-thumbnail [exercise]="exercise"></exercise-thumbnail>
-      </ion-item>
-  </ion-list>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-2>
+        <button ion-button icon-only >
+          <ion-icon name="play"></ion-icon>
+        </button>
+      </ion-col>
+      <ion-col col-8>
+        {{ workoutDay.name }}      
+      </ion-col>
+      <ion-col col-2>
+          <button ion-button icon-only >
+            <ion-icon name="construct"></ion-icon>
+          </button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-list no-lines>
+        <ion-item *ngFor="let exercise of workoutDay.exercises">
+          <exercise-thumbnail [exercise]="exercise"></exercise-thumbnail>
+        </ion-item>
+      </ion-list>
+    </ion-row>
+</ion-grid>
 </div>

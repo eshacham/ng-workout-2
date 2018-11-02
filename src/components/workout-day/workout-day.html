@@ -1,17 +1,19 @@
 <ion-grid>
   <ion-row>
     <ion-col col-2>
-      <button ion-button icon-only >
-        <ion-icon name="play"></ion-icon>
+      <button ion-button icon-only clear *ngIf="IsDisplayOrWorkout" (click)="startOrStop()">
+        <ion-icon name="play" *ngIf="IsDisplayMode"></ion-icon>
+        <ion-icon name="pause" *ngIf="IsWorkoutMode"></ion-icon>
       </button>
     </ion-col>
     <ion-col col-8>
-      {{ workoutDay.name }}      
+      {{ workoutDay.name }} {{ DisplayMode }}
     </ion-col>
     <ion-col col-2>
-        <button ion-button icon-only >
-          <ion-icon name="construct"></ion-icon>
-        </button>
+      <button ion-button icon-only clear *ngIf="IsDisplayOrEdit" (click)="editOrCancel()">
+        <ion-icon name="construct" *ngIf="IsDisplayMode"></ion-icon>
+        <ion-icon name="exit" *ngIf="IsEditMode"></ion-icon>
+      </button>
     </ion-col>
   </ion-row>
   <ion-row>

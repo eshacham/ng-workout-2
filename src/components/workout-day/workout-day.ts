@@ -45,4 +45,14 @@ export class WorkoutDayComponent {
       DisplayMode.Display : DisplayMode.Edit;
     //this.emitExerciseActionEvent(ExerciseAction.Run);
   }
+
+  addExercise() {
+    //const newExercise: Exercise = this.workoutService.getNewtWorkoutSet();
+    //this.workoutDay.exercises.push(newExercise);
+    this.saveChanges() ;
+  }
+  saveChanges() {
+    this.DisplayMode = DisplayMode.Display;
+    //this.toastr.info('Saved!');
+  }
 }

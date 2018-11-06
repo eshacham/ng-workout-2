@@ -5,7 +5,8 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-slides [pager]='true' [paginationType]='bullets'>
+  <ion-slides #slider [pager]='true' [paginationType]='bullets' 
+              (ionSlideDidChange)="slideChanged()">
 
     <ion-slide *ngFor="let day of workout.days">
       <workout-day [workoutDay]="day" ></workout-day>

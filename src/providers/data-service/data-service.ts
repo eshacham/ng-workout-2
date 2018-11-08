@@ -1,3 +1,4 @@
+import { StateCache } from './../../shared/model/StateCache';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -5,11 +6,15 @@ import { Injectable } from '@angular/core';
 export class DataServiceProvider {
 
   constructor(public http: HttpClient) {
-    console.log('Hello DataServiceProvider Provider');
+    this.state = new StateCache();
   }
 
-  public static _lastSelectedWorkoutDayIndex = 0;
-  //get lastSelectedWorkoutDayIndex(): number { return this._lastSelectedWorkoutDayIndex }
-  //set lastSelectedWorkoutDayIndex(value: number) { this._lastSelectedWorkoutDayIndex = value }
+  private state: StateCache;
+  setLastSelectedWorkoutDay(workoutName: string, workoutDayIndex: number) {
+    this.state.setLastSelectedWorkoutDay(workoutName, workoutDayIndex);
+   }
+  getLastSelectedWorkoutDay(workoutName: string): number {
+    return this.state.getLastSelectedWorkoutDay(workoutName);
+   }
 
 }

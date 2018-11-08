@@ -12,6 +12,7 @@ import { SettingsPage } from '../pages/settings/settings';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { WorkoutsPageModule } from '../pages/workouts/workouts-page.module'
+import { DataServiceProvider } from '../providers/data-service/data-service';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import { WorkoutsPageModule } from '../pages/workouts/workouts-page.module'
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    
+    DataServiceProvider
   ]
 })
 export class AppModule {}

@@ -14,17 +14,16 @@ export class WorkoutdaysPage {
   workout: Workout;
 
   constructor(
-    public dataService: DataServiceProvider, 
-    public navCtrl: NavController, 
-    public navParams: NavParams) {
+    private navCtrl: NavController, 
+    private navParams: NavParams,
+    private dataService: DataServiceProvider) {
     this.workout = this.navParams.get('workout');
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad WorkoutdaysPage');
     if (this.slides) {
-      //const lastIndex = this.dataService.lastSelectedWorkoutDayIndex;
-      const lastIndex = DataServiceProvider._lastSelectedWorkoutDayIndex;
+      const lastIndex = this.dataService.getLastSelectedWorkoutDay(this.workout.name);
       console.log('last index on view loaded', lastIndex)
       
       setTimeout(() => {
@@ -37,8 +36,7 @@ export class WorkoutdaysPage {
     if (this.slides) {
     const lastIndex = this.slides.getActiveIndex();
     console.log('last index on slide changes', lastIndex)
-    //this.dataService.lastSelectedWorkoutDayIndex = lastIndex;
-    DataServiceProvider._lastSelectedWorkoutDayIndex = lastIndex;
+    this.dataService.setLastSelectedWorkoutDay(this.workout.name, lastIndex);
     }
   }
 

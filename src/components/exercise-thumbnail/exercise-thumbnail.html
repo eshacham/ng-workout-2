@@ -1,3 +1,12 @@
-<div>
- {{ exercise.id }}
-</div>
+
+    <ion-list no-lines>
+        <ion-item *ngFor="let exerciseSet of exercise.sets" >
+            <ion-thumbnail item-start>
+                <img src={{exerciseSet.imageUrl}} />
+            </ion-thumbnail>
+            <h2>{{exerciseSet.name}}</h2>
+        </ion-item>
+    </ion-list>
+    <!-- {{exercise.id}} -->
+
+     

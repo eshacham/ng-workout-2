@@ -1,8 +1,18 @@
 exercise-thumbnail {
     ion-thumbnail {
         img {
-            height: 68px!important;
-            width: 68px!important;
-        }
+            height: 80px!important;
+            width: 80px!important;
+        };
+        margin: 2px 1px 2px 1px!important;
+    };
+    #exercise-set-list {
+        margin-bottom: 0px;
+    };
+    #exercise-set-list-item {
+        padding-left: 0px;
+    };
+    h2 {
+        margin: 0px 0px 0px 1px!important;
     }
 }

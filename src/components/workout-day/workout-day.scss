@@ -1,7 +1,25 @@
 workout-day {
+    #workout-day-list-col {
+        padding: 0px!important;
+    }
     #workout-day-list {
         height: 50vh;
-        width: 100vw;
+        //width: 100vw;
         overflow-y: scroll;
+        overflow-x: hidden;
+        margin-bottom: 0px;
+    }; 
+    #workout-day-list-item {
+        padding-left: 0px;
+        margin: 1px;
+    };
+    .item-inner {
+        padding-right: 0px!important;
+    };
+    ion-label {
+        margin: 0px!important;
+    };
+    ion-grid {
+        padding: 0px!important;
     }
 }

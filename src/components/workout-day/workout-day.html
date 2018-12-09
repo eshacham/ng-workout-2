@@ -1,5 +1,5 @@
 <ion-grid>
-  <ion-row>
+  <ion-row align-items-center>
     <ion-col col-2>
       <button ion-button icon-only clear *ngIf="IsDisplayOrWorkout"
               (click)="startOrStop()">
@@ -19,12 +19,14 @@
     </ion-col>
   </ion-row>
   <ion-row>
-    <ion-list id='workout-day-list' no-lines >
-      <ion-item *ngFor="let exercise of workoutDay.exercises"
-                id='workout-day-list-item'>
-        <exercise-thumbnail [exercise]="exercise"></exercise-thumbnail>
-      </ion-item>
-    </ion-list>
+    <ion-col id='workout-day-list-col'>
+      <ion-list id='workout-day-list' no-lines >
+        <ion-item *ngFor="let exercise of workoutDay.exercises"
+                  id='workout-day-list-item'>
+          <exercise-thumbnail [exercise]="exercise"></exercise-thumbnail>
+        </ion-item>
+      </ion-list>
+    </ion-col>
   </ion-row>
   <ion-row *ngIf="IsEditMode">
     <ion-col col-6>

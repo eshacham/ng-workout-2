@@ -11,7 +11,8 @@ import { ExerciseThumbnailModule } from '../../components/exercise-thumbnail/exe
   ],
   imports: [
     IonicPageModule.forChild(WorkoutdaysPage),
-    ExerciseThumbnailModule
+    ExerciseThumbnailModule,
+    
   ],
   entryComponents: [
     WorkoutdaysPage, 

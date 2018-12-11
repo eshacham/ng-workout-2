@@ -5,5 +5,7 @@
             <img src={{exerciseSet.imageUrl}} />
         </ion-thumbnail>
         <h2 text-wrap>{{exerciseSet.name}}</h2>
+        <exercise-variation [exerciseSet]="exerciseSet">            
+        </exercise-variation>                         
     </ion-item>
 </ion-list>

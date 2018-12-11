@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { ExerciseThumbnailComponent } from './exercise-thumbnail';
+import { ExerciseVariationModule } from '../../components/exercise-variation/exercise-variation.module';
+
 import { IonicPageModule } from 'ionic-angular';
 
 @NgModule({
@@ -8,6 +10,7 @@ import { IonicPageModule } from 'ionic-angular';
 	],
 	imports: [
 		IonicPageModule.forChild(ExerciseThumbnailComponent),
+		ExerciseVariationModule
 	],
 	exports: [
 		ExerciseThumbnailComponent

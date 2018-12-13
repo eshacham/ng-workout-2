@@ -1,1 +1,34 @@
 <h5>{{exerciseDetails}}</h5>
+<div *ngIf="InEditMode">
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngIf="exerciseSet.theGrip">
+        <ion-label>Grip Type</ion-label>
+        <ion-select [(ngModel)]="exerciseSet.theGrip.typeOfGrip">
+          <ion-option *ngFor="let gripType of gripTypes"
+                    value={{gripType}}>
+                    {{gripType}}
+            </ion-option>
+        </ion-select>
+      </ion-col>
+      <ion-col *ngIf="exerciseSet.theGrip">
+        <ion-label>Grip Width</ion-label>
+        <ion-select [(ngModel)]="exerciseSet.theGrip.width">
+          <ion-option *ngFor="let gripWidth of gripWidths"
+                    value={{gripWidth}}>
+                    {{gripWidth}}
+            </ion-option>
+        </ion-select>
+      </ion-col>
+      <ion-col *ngIf="exerciseSet.typeOfWeight">
+        <ion-label>Weight Type</ion-label>
+        <ion-select [(ngModel)]="exerciseSet.typeOfWeight">
+          <ion-option *ngFor="let weightType of weightTypes"
+                    value={{weightType}}>
+                    {{weightType}}
+            </ion-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>

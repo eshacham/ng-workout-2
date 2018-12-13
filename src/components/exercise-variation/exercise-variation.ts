@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { SimpleChange } from '@angular/core/src/change_detection/change_detection_util';
 import { ExerciseSet } from '../../shared/model/ExerciseSet';
 import { GripType, GripWidth, WeightType } from '../../shared/enums';
 
@@ -10,10 +11,15 @@ import { GripType, GripWidth, WeightType } from '../../shared/enums';
 export class ExerciseVariationComponent {
 
   @Input() exerciseSet: ExerciseSet;
+  @Input() isEditing: boolean;
 
-  constructor() {
-   
-  }
+  inEditMode: boolean;
+    get InEditMode(): boolean {
+        return this.inEditMode;
+    }
+
+  constructor() {}
+
   get exerciseDetails(): string {
     const details = [];
 
@@ -27,6 +33,17 @@ export class ExerciseVariationComponent {
         details.push(this.exerciseSet.typeOfWeight);
     }
     return details.join(' | ');
-}
+  }
+
+  weightTypes = Object.keys(WeightType);
+  gripTypes = Object.keys(GripType);
+  gripWidths = Object.keys(GripWidth);
+
+  ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
+      const change = changes['isEditing'];
+      if (change) {
+          this.inEditMode = change.currentValue;
+      }
+  }
 
 }

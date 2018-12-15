@@ -30,4 +30,14 @@ exercise-thumbnail {
         background: rgb(233, 185, 55);
         color: #17183b;
     }
+
+    .noTopMargin { 
+        margin-top: 0px;
+    }
+    .noBottomMargin { 
+        margin-bottom: 0px;
+    }
+    .imageWrap {
+        display:inline-block;position:relative;
+    }
 }

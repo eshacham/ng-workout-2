@@ -1,11 +1,24 @@
-<ion-list id='exercise-set-list' no-lines>
-    <ion-item *ngFor="let exerciseSet of exercise.sets" 
-                id='exercise-set-list-item'>
-        <ion-thumbnail item-start>
-            <img src={{exerciseSet.imageUrl}} />
-        </ion-thumbnail>
-        <h2 text-wrap>{{exerciseSet.name}}</h2>
-        <exercise-variation [exerciseSet]="exerciseSet">            
-        </exercise-variation>                         
-    </ion-item>
-</ion-list>
+<div [ngSwitch]="DisplayMode">
+    <div *ngSwitchCase="displayMode.Workout">
+        <div [hidden]="IsRunning">
+        </div>
+        <div [hidden]="!IsRunning">
+        </div>
+    </div>
+    <div *ngSwitchCase="displayMode.Edit">
+
+    </div>
+    <div *ngSwitchDefault>
+        <ion-list id='exercise-set-list' no-lines>
+            <ion-item *ngFor="let exerciseSet of exercise.sets" 
+                        id='exercise-set-list-item'>
+                <ion-thumbnail item-start>
+                    <img src={{exerciseSet.imageUrl}} />
+                </ion-thumbnail>
+                <h2 text-wrap>{{exerciseSet.name}}</h2>
+                <exercise-variation [exerciseSet]="exerciseSet">            
+                </exercise-variation>                         
+            </ion-item>
+        </ion-list>
+    </div>
+</div>

@@ -2,6 +2,10 @@ import { DataServiceProvider } from './../../providers/data-service/data-service
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
 import { Workout } from '../../shared/model/Workout';
+import { ExerciseActionEvent } from '../../shared/model/ExerciseActionEvent';
+import { ExerciseAction, DisplayMode } from '../../shared/enums';
+import { Subject } from 'rxjs/Subject';
+import { ExerciseSwitchModeEvent } from '../../shared/model/ExerciseSwitchModeEvent';
 
 @IonicPage()
 @Component({
@@ -19,6 +23,8 @@ export class WorkoutdaysPage {
     private dataService: DataServiceProvider) {
     this.workout = this.navParams.get('workout');
   }
+  
+  componentPublisher: Subject<ExerciseSwitchModeEvent> = new Subject();
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad WorkoutdaysPage');
@@ -38,6 +44,33 @@ export class WorkoutdaysPage {
     console.log('last index on slide changes', lastIndex)
     this.dataService.setLastSelectedWorkoutDay(this.workout.name, lastIndex);
     }
+  }
+
+  handleExerciseActionEvent(event: ExerciseActionEvent) {
+    const exerciseAction: ExerciseAction = event.action;
+    switch (exerciseAction) {
+        case ExerciseAction.Completed:
+            console.log('workout: receieved completed event: ', event.exerciseIndex);
+            // this.handleExersiceSetComletion(event.exerciseIndex);
+            break;
+        case ExerciseAction.Delete:
+            console.log('workout: receieved delete event: ', event.exercise);
+            // this.deleteExercise(event.exercise, event.workoutDayName);
+            break;
+        case ExerciseAction.Edit:
+            console.log('workout: receieved edit event: ', event.exercise);
+            break;
+        case ExerciseAction.Run:
+            console.log('workout: receieved run event: ', event.workoutDayName);
+            this.publishWorkoutEvent(DisplayMode.Workout, event.workoutDayName);
+            break;
+    }
+  }
+
+  publishWorkoutEvent(displayMode: DisplayMode, runningExerciseDayName: string)  {
+      const workoutEvent =
+          new ExerciseSwitchModeEvent (displayMode, null, runningExerciseDayName);
+      this.componentPublisher.next(workoutEvent);
   }
 
 }

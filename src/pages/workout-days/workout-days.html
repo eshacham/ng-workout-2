@@ -9,7 +9,10 @@
               (ionSlideDidChange)="slideChanged()">
 
     <ion-slide *ngFor="let day of workout.days">
-      <workout-day [workoutDay]="day" ></workout-day>
+      <workout-day [workoutDay]="day" 
+                  [workoutComponentPublisher]="componentPublisher"
+                  (eventEmitter)="handleExerciseActionEvent($event)">
+      </workout-day>
     </ion-slide>
 
   </ion-slides>

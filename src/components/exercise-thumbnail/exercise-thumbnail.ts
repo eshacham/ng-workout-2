@@ -127,43 +127,43 @@ export class ExerciseThumbnailComponent implements OnInit, OnDestroy {
     isTimedRepRemaining(repIndex): boolean {
       return this.activeRepIndex === repIndex &&
               this._timedRepRemaining > 0 && this.IsRunning ;
-  }
+    }
 
-  get isResting(): boolean {
-      return this._timedRestRemaining > 0 && this.IsRunning ;
-  }
+    get isResting(): boolean {
+        return this._timedRestRemaining > 0 && this.IsRunning ;
+    }
 
-  get hasSet(): boolean {
-      return this.exercise.sets.length > 1;
-  }
+    get hasSet(): boolean {
+        return this.exercise.sets.length > 1;
+    }
 
-  exerciseSelected() {
-      if (this.DisplayMode === DisplayMode.Workout) {
-          if (!this.IsRunning && !this.IsFrozen) {
-              console.log(`Display Exercise ${this.exercise.sets[0].name} and freezing`);
-              this.IsFrozen = true;
-          } else {
-             console.log(`Collapse Exercise ${this.exercise.sets[0].name} and unfreezing`);
-              this.IsFrozen = false;
-          }
-      }
-  }
+    exerciseSelected() {
+        if (this.DisplayMode === DisplayMode.Workout) {
+            if (!this.IsRunning && !this.IsFrozen) {
+                console.log(`Display Exercise ${this.exercise.sets[0].name} and freezing`);
+                this.IsFrozen = true;
+            } else {
+                console.log(`Collapse Exercise ${this.exercise.sets[0].name} and unfreezing`);
+                this.IsFrozen = false;
+            }
+        }
+    }
 
-  isFirstInSet(exerciseSet: ExerciseSet): boolean {
-      return this.hasSet && this.exercise.sets[0] === exerciseSet;
-  }
+    isFirstInSet(exerciseSet: ExerciseSet): boolean {
+        return this.hasSet && this.exercise.sets[0] === exerciseSet;
+    }
 
-  isFirstSet(exerciseSet: ExerciseSet): boolean {
-      return !this.hasSet || this.isFirstInSet(exerciseSet);
-  }
+    isFirstSet(exerciseSet: ExerciseSet): boolean {
+        return !this.hasSet || this.isFirstInSet(exerciseSet);
+    }
 
-  getTopBottomMarginClass(exerciseSet: ExerciseSet) {
-      if (this.isFirstInSet(exerciseSet)) {
-          return ['noBottomMargin'];
-      } else {
-          return ['noTopMargin'];
-      }
-  }
+    getTopBottomMarginClass(exerciseSet: ExerciseSet) {
+        if (this.isFirstInSet(exerciseSet)) {
+            return ['noBottomMargin'];
+        } else {
+            return ['noTopMargin'];
+        }
+    }
 
   getRunningExerciseSetCellClass() {
       let returnClass = 'col-sm-';

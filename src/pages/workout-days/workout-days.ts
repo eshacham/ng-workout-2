@@ -40,37 +40,37 @@ export class WorkoutdaysPage {
 
   slideChanged() {
     if (this.slides) {
-    const lastIndex = this.slides.getActiveIndex();
-    console.log('last index on slide changes', lastIndex)
-    this.dataService.setLastSelectedWorkoutDay(this.workout.name, lastIndex);
+      const lastIndex = this.slides.getActiveIndex();
+      console.log('last index on slide changes', lastIndex)
+      this.dataService.setLastSelectedWorkoutDay(this.workout.name, lastIndex);
     }
   }
 
   handleExerciseActionEvent(event: ExerciseActionEvent) {
     const exerciseAction: ExerciseAction = event.action;
     switch (exerciseAction) {
-        case ExerciseAction.Completed:
-            console.log('workout: receieved completed event: ', event.exerciseIndex);
-            // this.handleExersiceSetComletion(event.exerciseIndex);
-            break;
-        case ExerciseAction.Delete:
-            console.log('workout: receieved delete event: ', event.exercise);
-            // this.deleteExercise(event.exercise, event.workoutDayName);
-            break;
-        case ExerciseAction.Edit:
-            console.log('workout: receieved edit event: ', event.exercise);
-            break;
-        case ExerciseAction.Run:
-            console.log('workout: receieved run event: ', event.workoutDayName);
-            this.publishWorkoutEvent(DisplayMode.Workout, event.workoutDayName);
-            break;
+      case ExerciseAction.Completed:
+        console.log('workout: receieved completed event: ', event.exerciseIndex);
+        // this.handleExersiceSetComletion(event.exerciseIndex);
+        break;
+      case ExerciseAction.Delete:
+        console.log('workout: receieved delete event: ', event.exercise);
+        // this.deleteExercise(event.exercise, event.workoutDayName);
+        break;
+      case ExerciseAction.Edit:
+        console.log('workout: receieved edit event: ', event.exercise);
+        break;
+      case ExerciseAction.Run:
+        console.log('workout: receieved run event: ', event.workoutDayName);
+        this.publishWorkoutEvent(DisplayMode.Workout, event.workoutDayName);
+        break;
     }
   }
 
-  publishWorkoutEvent(displayMode: DisplayMode, runningExerciseDayName: string)  {
-      const workoutEvent =
-          new ExerciseSwitchModeEvent (displayMode, null, runningExerciseDayName);
-      this.workoutDaysPublisher.next(workoutEvent);
+  publishWorkoutEvent(displayMode: DisplayMode, runningExerciseDayName: string) {
+    const workoutEvent =
+      new ExerciseSwitchModeEvent(displayMode, null, runningExerciseDayName);
+    this.workoutDaysPublisher.next(workoutEvent);
   }
 
 }

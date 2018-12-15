@@ -2,7 +2,7 @@
   <ion-row align-items-center>
     <ion-col col-2>
       <button ion-button icon-only clear *ngIf="IsDisplayOrWorkout"
-              (click)="startOrStop()">
+              (click)="startOrStopToggle()">
         <ion-icon name="play" *ngIf="IsDisplayMode"></ion-icon>
         <ion-icon name="pause" *ngIf="IsWorkoutMode"></ion-icon>
       </button>
@@ -12,7 +12,7 @@
     </ion-col>
     <ion-col col-2>
       <button ion-button icon-only clear *ngIf="IsDisplayOrEdit"
-              (click)="editOrCancel()">
+              (click)="editOrCancelToggle()">
         <ion-icon name="construct" *ngIf="IsDisplayMode"></ion-icon>
         <ion-icon name="exit" *ngIf="IsEditMode"></ion-icon>
       </button>

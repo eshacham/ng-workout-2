@@ -88,25 +88,24 @@ export class WorkoutDayComponent implements OnInit, OnDestroy {
       //this.workoutService.deleteExercise(set, this.workoutDay);
   }
 
-  setEditMode() {
-      this.DisplayMode = DisplayMode.Edit;
-  }
-
-  cancelEditEditMode() {
+  startOrStopToggle() {
+    if (this.DisplayMode === DisplayMode.Display) {
+      this.DisplayMode = DisplayMode.Workout;
+      this.emitExerciseActionEvent(ExerciseAction.Run)
+    } else {
       this.DisplayMode = DisplayMode.Display;
-      //this.toastr.warning('Cancelled!');
+      this.emitExerciseActionEvent(ExerciseAction.Completed)
+    }
   }
 
-  startOrStop() {
-    this.DisplayMode = (this.DisplayMode === DisplayMode.Workout) ? 
-      DisplayMode.Display : DisplayMode.Workout;
-      this.emitExerciseActionEvent(ExerciseAction.Run);
-  }
-
-  editOrCancel() {
-    this.DisplayMode = (this.DisplayMode === DisplayMode.Edit) ? 
-      DisplayMode.Display : DisplayMode.Edit;
-      this.emitExerciseActionEvent(ExerciseAction.Run);
+  editOrCancelToggle() {
+    if (this.DisplayMode === DisplayMode.Display) {
+      this.DisplayMode = DisplayMode.Edit
+      this.emitExerciseActionEvent(ExerciseAction.Edit);
+    } else {
+      this.DisplayMode = DisplayMode.Display
+      this.emitExerciseActionEvent(ExerciseAction.Completed);
+    }
   }
 
   addExercise() {
@@ -119,11 +118,6 @@ export class WorkoutDayComponent implements OnInit, OnDestroy {
     this.DisplayMode = DisplayMode.Display;
     //this.toastr.info('Saved!');
   }
-
-  startWorkout() {
-    this.DisplayMode = DisplayMode.Workout;
-    this.emitExerciseActionEvent(ExerciseAction.Run);
-}
 
   finishWorkout (notify: boolean = true) {
       this.DisplayMode = DisplayMode.Display;

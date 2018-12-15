@@ -15,11 +15,11 @@ export class WorkoutDayComponent implements OnInit, OnDestroy {
   constructor() {  }
 
   @Input('workoutDay') workoutDay: WorkoutDay;
-  @Input() workoutComponentPublisher: Subject<ExerciseSwitchModeEvent>;
+  @Input() inWorkoutDaysPublisher: Subject<ExerciseSwitchModeEvent>;
 
-  @Output() eventEmitter = new EventEmitter<ExerciseActionEvent>();
+  @Output() outEventEmitter = new EventEmitter<ExerciseActionEvent>();
 
-  componentPublisher: Subject<ExerciseSwitchModeEvent> = new Subject();
+  workoutDayPublisher: Subject<ExerciseSwitchModeEvent> = new Subject();
   runningExerciseIndex = 0;
 
   displayMode = DisplayMode;
@@ -47,7 +47,7 @@ export class WorkoutDayComponent implements OnInit, OnDestroy {
   get IsDisplayOrEdit () { return this.IsEditMode || this.IsDisplayMode; }
 
   ngOnInit() {
-    this.workoutComponentPublisher.subscribe(event => this.handleWorkoutEventchange(event));
+    this.inWorkoutDaysPublisher.subscribe(event => this.handleWorkoutEventchange(event));
   }
 
   handleWorkoutEventchange(event: ExerciseSwitchModeEvent) {
@@ -60,7 +60,7 @@ export class WorkoutDayComponent implements OnInit, OnDestroy {
     // needed if child gets re-created (eg on some model changes)
     // note that subsequent subscriptions on the same subject will fail
     // so the parent has to re-create parentSubject on changes
-    this.workoutComponentPublisher.unsubscribe();
+    this.inWorkoutDaysPublisher.unsubscribe();
   }
   
   handleExerciseActionEvent(event: ExerciseActionEvent) {
@@ -148,11 +148,11 @@ export class WorkoutDayComponent implements OnInit, OnDestroy {
     runningExerciseIndex: number)  {
     const workoutEvent =
         new ExerciseSwitchModeEvent (displayMode, runningExerciseIndex, this.workoutDay.name);
-    this.componentPublisher.next(workoutEvent);
+    this.workoutDayPublisher.next(workoutEvent);
   }
 
   emitExerciseActionEvent(action: ExerciseAction) {
-      this.eventEmitter.emit(new ExerciseActionEvent(
+      this.outEventEmitter.emit(new ExerciseActionEvent(
           action,
           null,
           null,

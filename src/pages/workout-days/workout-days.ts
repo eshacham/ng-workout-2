@@ -24,7 +24,7 @@ export class WorkoutdaysPage {
     this.workout = this.navParams.get('workout');
   }
   
-  componentPublisher: Subject<ExerciseSwitchModeEvent> = new Subject();
+  workoutDaysPublisher: Subject<ExerciseSwitchModeEvent> = new Subject();
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad WorkoutdaysPage');
@@ -70,7 +70,7 @@ export class WorkoutdaysPage {
   publishWorkoutEvent(displayMode: DisplayMode, runningExerciseDayName: string)  {
       const workoutEvent =
           new ExerciseSwitchModeEvent (displayMode, null, runningExerciseDayName);
-      this.componentPublisher.next(workoutEvent);
+      this.workoutDaysPublisher.next(workoutEvent);
   }
 
 }

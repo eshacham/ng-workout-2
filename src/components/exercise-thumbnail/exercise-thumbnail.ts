@@ -18,9 +18,9 @@ export class ExerciseThumbnailComponent implements OnInit, OnDestroy {
   @Input() workoutDayName: string;
   @Input('exercise') exercise: Exercise;
   @Input() exerciseIndex: number;
-  @Input() workoutDayComponentPublisher: Subject<ExerciseSwitchModeEvent>;
+  @Input() inWorkoutDayPublisher: Subject<ExerciseSwitchModeEvent>;
 
-  @Output() eventEmitter = new EventEmitter<ExerciseActionEvent>();
+  @Output() outEventEmitter = new EventEmitter<ExerciseActionEvent>();
 
   MAXREPS = 4;
   MINREPS = 1;
@@ -82,7 +82,7 @@ export class ExerciseThumbnailComponent implements OnInit, OnDestroy {
     completedReps: number[] = [];
 
     ngOnInit() {
-        this.workoutDayComponentPublisher.subscribe(event => this.handleWorkoutEventchange(event));
+        this.inWorkoutDayPublisher.subscribe(event => this.handleWorkoutEventchange(event));
       }
 
     handleWorkoutEventchange(event: ExerciseSwitchModeEvent) {
@@ -96,7 +96,7 @@ export class ExerciseThumbnailComponent implements OnInit, OnDestroy {
       // needed if child gets re-created (eg on some model changes)
       // note that subsequent subscriptions on the same subject will fail
       // so the parent has to re-create parentSubject on changes
-      this.workoutDayComponentPublisher.unsubscribe();
+      this.inWorkoutDayPublisher.unsubscribe();
     }
   
     toggleEditExercise() {
@@ -117,7 +117,7 @@ export class ExerciseThumbnailComponent implements OnInit, OnDestroy {
     }
 
     emitExerciseActionEvent(action: ExerciseAction) {
-        this.eventEmitter.emit(new ExerciseActionEvent(
+        this.outEventEmitter.emit(new ExerciseActionEvent(
             action,
             this.exercise,
             this.exerciseIndex,

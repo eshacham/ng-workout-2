@@ -26,9 +26,9 @@
           <exercise-thumbnail [exercise]="exercise"
                               [workoutDayName]=workoutDay.name
                               [exerciseIndex]="i+1"
-                              [workoutDayComponentPublisher]="componentPublisher"
+                              [inWorkoutDayPublisher]="workoutDayPublisher"
                               #exerciseComponent (click)="exerciseComponent.exerciseSelected()"
-                              (eventEmitter)="handleExerciseActionEvent($event)">
+                              (outEventEmitter)="handleExerciseActionEvent($event)">
             </exercise-thumbnail>
         </ion-item>
       </ion-list>

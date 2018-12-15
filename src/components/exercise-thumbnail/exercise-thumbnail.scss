@@ -17,4 +17,17 @@ exercise-thumbnail {
     h2 {
         margin: 0px 0px 0px 1px!important;
     }
+    .rep {
+        // height: 80px;    
+        margin: 2px 0px 2px 0px ;
+    }
+    .nonActiveRep {
+        background: #17183b;
+        color: rgb(233, 185, 55)    
+    }
+    
+    .activeRep {
+        background: rgb(233, 185, 55);
+        color: #17183b;
+    }
 }

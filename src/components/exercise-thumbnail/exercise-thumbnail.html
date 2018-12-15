@@ -17,13 +17,35 @@
                         </ion-thumbnail> 
                     </ion-col>
                 </ion-row>
-                <ion-row >
+                <ion-row>
                     <ion-col  *ngFor="let exerciseSet of exercise.sets" >      
                         <exercise-variation [exerciseSet]="exerciseSet" text-wrap text-center>            
                         </exercise-variation> 
                     </ion-col>
                 </ion-row>
+                <ion-row *ngFor="let exerciseSet of exercise.sets">
+                    <ion-col *ngFor="let rep of exerciseSet.reps; let i = index" class="rep" 
+                    [ngClass]="getRunningExerciseSetRepCellClass(i)" padding-vertical>
+                        <div *ngIf='rep.weight'>
+                            <h4 text-center>{{rep.weight}}<small>{{' ' + weightUnit[rep.weightUnit]}}</small></h4>
+                        </div>
+                        <div *ngIf='rep.times'>
+                            <h4 text-center>{{rep.times}}<small>{{' Times'}}</small>
+                                <span *ngIf='isRepCompleted(i)' class='glyphicon glyphicon-ok'></span>
+                            </h4>
+                        </div>
+                        <div *ngIf='rep.seconds'>
+                            <h4 text-center>{{rep.seconds}}<small>{{' Seconds'}}</small>
+                                <span *ngIf='isRepCompleted(i)' class='glyphicon glyphicon-ok'></span>
+                            </h4>
+                        </div>
+                        <div class='text-center' *ngIf="isTimedRepRemaining(i)">{{timedRepRemaining}} Seconds
+                        </div>
+                    </ion-col>
+                </ion-row>
+
             </ion-grid>
+
         </div>
     </div>
     <div *ngSwitchCase="displayMode.Edit">

@@ -1,8 +1,29 @@
 <div [ngSwitch]="DisplayMode">
     <div *ngSwitchCase="displayMode.Workout">
         <div [hidden]="IsRunning">
+
         </div>
         <div [hidden]="!IsRunning">
+            <ion-grid>
+                <ion-row>
+                    <ion-col  *ngFor="let exerciseSet of exercise.sets" >    
+                        <h3 text-wrap text-center>{{exerciseSet.name}}</h3> 
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col  *ngFor="let exerciseSet of exercise.sets">                       
+                        <ion-thumbnail >
+                            <img src={{exerciseSet.imageUrl}} />
+                        </ion-thumbnail> 
+                    </ion-col>
+                </ion-row>
+                <ion-row >
+                    <ion-col  *ngFor="let exerciseSet of exercise.sets" >      
+                        <exercise-variation [exerciseSet]="exerciseSet" text-wrap text-center>            
+                        </exercise-variation> 
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
         </div>
     </div>
     <div *ngSwitchCase="displayMode.Edit">
@@ -11,7 +32,7 @@
     <div *ngSwitchDefault>
         <ion-list id='exercise-set-list' no-lines>
             <ion-item *ngFor="let exerciseSet of exercise.sets" 
-                        id='exercise-set-list-item'>
+                    id='exercise-set-list-item'>
                 <ion-thumbnail item-start>
                     <img src={{exerciseSet.imageUrl}} />
                 </ion-thumbnail>

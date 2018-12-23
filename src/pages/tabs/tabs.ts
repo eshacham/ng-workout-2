@@ -13,7 +13,5 @@ export class TabsPage {
   tabLibraryRoot = LibraryPage;
   tabSettingsRoot = SettingsPage;
 
-  constructor() {
-
-  }
+  constructor() { }
 }

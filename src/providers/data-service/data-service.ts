@@ -7,6 +7,7 @@ export class DataServiceProvider {
 
   constructor(public http: HttpClient) {
     this.state = new StateCache();
+    //http.get('test')
   }
 
   private state: StateCache;

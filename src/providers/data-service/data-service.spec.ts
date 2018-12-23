@@ -1,6 +1,19 @@
+import { HttpClient } from '@angular/common/http';
 import { DataServiceProvider } from './data-service';
+import { TestBed } from '@angular/core/testing';
+import { HttpClientMock } from '../../../test-config/mocks-ionic';
 
 describe('Data Service Provider', () => {
+    // beforeEach(async () => {
+    //     TestBed.configureTestingModule({
+    //         declarations: [DataServiceProvider],
+    //         imports: [
+    //         ],
+    //         providers: [
+    //             { provide: HttpClient, useClass: HttpClientMock }
+    //         ]
+    //     })
+    // });
 
     describe('workout data state cache', () => {
         let dataServiceProvider: DataServiceProvider;

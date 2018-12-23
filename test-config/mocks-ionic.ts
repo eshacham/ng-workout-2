@@ -110,3 +110,9 @@ export class NavMock {
   }
 
 }
+
+export class HttpClientMock {
+  get () {
+    return 'test'
+  }
+}

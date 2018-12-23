@@ -1,22 +1,21 @@
-import { async, TestBed } from '@angular/core/testing';
+import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { IonicModule, Platform } from 'ionic-angular';
-import { TabsPage } from '../pages/tabs/tabs';
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
-import { MyApp } from './app.component';
 import {
   PlatformMock,
   StatusBarMock,
   SplashScreenMock
 } from '../../test-config/mocks-ionic';
 
-describe('Component: Root Component', () => {
-  let fixture;
-  let component;
+import { TabsPage } from '../pages/tabs/tabs';
+import { MyApp } from './app.component';
 
-  beforeEach(async(() => {
+describe('App Component', () => {
+  let fixture: ComponentFixture<MyApp>;
+  let comp: MyApp;
+
+  beforeEach(async() => {
     TestBed.configureTestingModule({
       declarations: [MyApp],
       imports: [
@@ -28,25 +27,23 @@ describe('Component: Root Component', () => {
         { provide: Platform, useClass: PlatformMock }
       ]
     })
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(MyApp);
-    component = fixture.componentInstance;
+    comp = fixture.componentInstance;
   });
 
   afterEach(() => {
     fixture.destroy();
-    component = null;
+    comp = null;
   });
 
-  it('is created', () => {
-    //expect(component instanceof MyApp).toBe(true);
-    expect(fixture).toBeTruthy();
-    expect(component).toBeTruthy();
+  it('should be created', () => {
+    expect(comp).toBeTruthy();
   });
 
-  it('displays the tabs page to the user', () => {
-      expect(component['rootPage']).toBe(TabsPage);
+  it('should set the root page to be the Tabs page', () => {
+      expect(comp['rootPage']).toBe(TabsPage);
   });
 });

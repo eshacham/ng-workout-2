@@ -9,7 +9,7 @@ import { WorkoutsPage } from '../workouts/workouts';
 import { LibraryPage } from '../library/library';
 import { SettingsPage } from '../settings/settings';
 
-describe('Pages: TabsPage', () => {
+describe('Page: TabsPage', () => {
     let fixture: ComponentFixture<TabsPage>;
     let comp: TabsPage;
     let tabs: DebugElement[];

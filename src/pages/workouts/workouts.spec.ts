@@ -17,9 +17,13 @@ let comp: WorkoutsPage;
 let fixture: ComponentFixture<WorkoutsPage>;
 let de: DebugElement;
 let el: HTMLElement;
+let defaultWorkouts: DefaultWorkouts;
+let getStorageSpy: jasmine.Spy;;
 
-describe('Page: Workouts Page', () => {
-
+describe('Page: WorkoutsPage', () => {
+    beforeAll(()=> {
+        defaultWorkouts = deserialize(DefaultWorkouts, json);
+    })
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [MyApp, WorkoutsPage],
@@ -27,7 +31,6 @@ describe('Page: Workouts Page', () => {
                 { provide: NavController },
                 { provide: Storage, useClass: StorageMock}
             ],
-
             imports: [
                 IonicModule.forRoot(MyApp),
                 IonicPageModule.forChild(WorkoutsPage),
@@ -42,9 +45,8 @@ describe('Page: Workouts Page', () => {
         fixture = TestBed.createComponent(WorkoutsPage);
         comp    = fixture.componentInstance;
         spyOn(comp.storage, 'ready')
-        spyOn(comp.storage, 'get')
+        getStorageSpy = spyOn(comp.storage, 'get').and.returnValue(defaultWorkouts.workouts)
         spyOn(comp.storage, 'set')
-        StorageMock.IsAlreadyStored = true;
     });
 
     afterEach(() => {
@@ -65,25 +67,24 @@ describe('Page: Workouts Page', () => {
     });
 
     it('should wait for the storage service to be ready', async () => {
-        await comp.initStorage();
+        await comp.ngOnInit();
         expect(comp.storage.ready).toHaveBeenCalled()
     });
 
     it('should try to get the stored workouts from storage', async () => {
-        await comp.initStorage();
+        await comp.ngOnInit();
         expect(comp.storage.get).toHaveBeenCalledWith('workouts')
+        expect(comp.workouts).toBe(defaultWorkouts.workouts)
     });
 
-    it('should try to store the default workouts in storage', async () => {
-        StorageMock.IsAlreadyStored = false
-        await comp.initStorage();
-        let defaultWorkouts: DefaultWorkouts;
-        defaultWorkouts = deserialize(DefaultWorkouts, json);
+    it('should set default workouts, when the workouts storage is empty', async () => {
+        getStorageSpy.and.returnValue(null)
+        await comp.ngOnInit();
         expect(comp.storage.set).toHaveBeenCalledWith('workouts', defaultWorkouts.workouts)
     });
 
     it('should set the workouts props to the default 3 workouts', async () => {
-        await comp.initStorage();
+        await comp.ngOnInit();
         expect(comp.workouts).toBeTruthy()
         expect(comp.workouts.length).toBe(3)
     });

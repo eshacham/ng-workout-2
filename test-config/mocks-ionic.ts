@@ -119,16 +119,7 @@ export class HttpClientMock {
 }
 
 export class StorageMock {
-  static IsAlreadyStored = true;
   async ready () {}
-  async get(key: string): Promise<Workout[]> {
-    if (StorageMock.IsAlreadyStored) {
-      let defaultWorkouts: DefaultWorkouts;
-      defaultWorkouts = deserialize(DefaultWorkouts, json);
-      return defaultWorkouts.workouts;
-    } else {
-      return null
-    }
-  }
+  async get(key: string) {}
   async set(key: string, workouts: Workout[]) {}
 }

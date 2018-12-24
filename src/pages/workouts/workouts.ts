@@ -17,12 +17,11 @@ export class WorkoutsPage implements OnInit {
   constructor(public navCtrl: NavController, public storage: Storage) {
   }
 
-  ngOnInit(): void {
-    this.initStorage();
+  async ngOnInit () {
+    await this.initStorage();
   }
 
-  async initStorage() {
-
+  private async initStorage() {
     await this.storage.ready()
     this.workouts = await this.storage.get(this.storageKey);
     if (!this.workouts || !this.workouts.length) {

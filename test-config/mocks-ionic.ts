@@ -1,5 +1,9 @@
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Workout } from '../src/shared/model/Workout';
+import { json } from '../src/assets/data/defaultWorkouts';
+import { deserialize } from 'json-typescript-mapper';
+import { DefaultWorkouts } from '../src/shared/model/DefaultWorkouts';
 
 export class PlatformMock {
   public ready(): Promise<any> {
@@ -112,4 +116,19 @@ export class HttpClientMock {
   get () {
     return 'test'
   }
+}
+
+export class StorageMock {
+  static IsAlreadyStored = true;
+  async ready () {}
+  async get(key: string): Promise<Workout[]> {
+    if (StorageMock.IsAlreadyStored) {
+      let defaultWorkouts: DefaultWorkouts;
+      defaultWorkouts = deserialize(DefaultWorkouts, json);
+      return defaultWorkouts.workouts;
+    } else {
+      return null
+    }
+  }
+  async set(key: string, workouts: Workout[]) {}
 }

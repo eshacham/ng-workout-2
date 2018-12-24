@@ -13,23 +13,23 @@ export class WorkoutsPage implements OnInit {
 
   storageKey = 'workouts';
   workouts: Workout[];
-  
-  constructor(public navCtrl: NavController, private storage: Storage) {    
-  } 
-  
+
+  constructor(public navCtrl: NavController, public storage: Storage) {
+  }
+
   ngOnInit(): void {
     this.initStorage();
   }
 
   async initStorage() {
-    
+
     await this.storage.ready()
     this.workouts = await this.storage.get(this.storageKey);
-    if (!this.workouts || !this.workouts.length) {   
-      let defaultWorkouts: DefaultWorkouts;   
+    if (!this.workouts || !this.workouts.length) {
+      let defaultWorkouts: DefaultWorkouts;
       defaultWorkouts = deserialize(DefaultWorkouts, json);
       await this.storage.set(this.storageKey, defaultWorkouts.workouts);
       this.workouts = defaultWorkouts.workouts;
-    }  
+    }
   }
 }

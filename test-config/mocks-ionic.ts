@@ -5,6 +5,9 @@ import { json } from '../src/assets/data/defaultWorkouts';
 import { deserialize } from 'json-typescript-mapper';
 import { DefaultWorkouts } from '../src/shared/model/DefaultWorkouts';
 
+const defaultWorkouts = deserialize(DefaultWorkouts, json);
+const defaultFirstWorkout = defaultWorkouts.workouts[0];
+
 export class PlatformMock {
   public ready(): Promise<any> {
     return Promise.resolve();
@@ -82,8 +85,7 @@ export class SplashScreenMock extends SplashScreen {
 
 export class MockNavParams {
   data = {
-     workout: {
-     }
+     workout: defaultFirstWorkout
   };
 
   get(param: string){
@@ -135,6 +137,6 @@ export class StorageMock {
 }
 
 export class MockDataServiceProvider {
-  getLastSelectedWorkoutDay (workoutName: string) {}
+  getLastSelectedWorkoutDay (workoutName: string):number { return 1}
   setLastSelectedWorkoutDay (workoutName: string, workout: Workout) {}
 }

@@ -10,8 +10,23 @@ describe('App E2E Test', () => {
     });
 
     describe('default screen', () => {
+        beforeEach(() => {
+            page.navigateTo('/');
+        })
 
+        it('should have a title', () => {
+            element(by.css('ion-title')).getText()
+            .then((title) => {
+                expect(title).toBe('workouts')
+            })
+        })
 
+        it('should have a nav bar', () => {
+            element(by.css('ion-navbar')).isPresent()
+            .then((present) => {
+                expect(present).toBe(true)
+            })
+        })
     })
 
 

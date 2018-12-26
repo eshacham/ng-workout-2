@@ -1,12 +1,12 @@
-import { Page } from './app.po';
-import { browser, element, by } from 'protractor';
+import { WorkoutPage } from './app.po';
+import { element, by } from 'protractor';
 
 describe('App E2E Test', () => {
 
-    let page: Page;
+    let page: WorkoutPage;
 
     beforeEach(() => {
-        page = new Page();
+        page = new WorkoutPage();
     });
 
     describe('default screen', () => {
@@ -15,16 +15,23 @@ describe('App E2E Test', () => {
         })
 
         it('should have a title', () => {
-            element(by.css('ion-title')).getText()
-            .then((title) => {
+            page.getTitle()
+            .then((title: string) => {
                 expect(title).toBe('workouts')
             })
         })
 
         it('should have a nav bar', () => {
-            element(by.css('ion-navbar')).isPresent()
+            page.getNavBar().isPresent()
             .then((present) => {
                 expect(present).toBe(true)
+            })
+        })
+
+        it('should have a list of workout card', () => {
+            page.getWorkoutCards()
+            .then((cards) => {
+                expect(cards.length).toBe(3)
             })
         })
     })

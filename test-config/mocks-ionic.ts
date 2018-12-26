@@ -80,6 +80,17 @@ export class SplashScreenMock extends SplashScreen {
   }
 }
 
+export class MockNavParams {
+  data = {
+     workout: {
+     }
+  };
+
+  get(param: string){
+    return this.data[param];
+  }
+}
+
 export class NavMock {
 
   public pop(): any {
@@ -109,7 +120,6 @@ export class NavMock {
   public registerChildNav(nav: any): void {
     return ;
   }
-
 }
 
 export class HttpClientMock {
@@ -122,4 +132,9 @@ export class StorageMock {
   async ready () {}
   async get(key: string) {}
   async set(key: string, workouts: Workout[]) {}
+}
+
+export class MockDataServiceProvider {
+  getLastSelectedWorkoutDay (workoutName: string) {}
+  setLastSelectedWorkoutDay (workoutName: string, workout: Workout) {}
 }

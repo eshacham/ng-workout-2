@@ -1,5 +1,5 @@
 import { DataServiceProvider } from './../../providers/data-service/data-service';
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
 import { Workout } from '../../shared/model/Workout';
 import { ExerciseActionEvent } from '../../shared/model/ExerciseActionEvent';
@@ -7,34 +7,36 @@ import { ExerciseAction, DisplayMode } from '../../shared/enums';
 import { Subject } from 'rxjs/Subject';
 import { ExerciseSwitchModeEvent } from '../../shared/model/ExerciseSwitchModeEvent';
 
-@IonicPage()
+//@IonicPage()
 @Component({
   templateUrl: 'workout-days.html',
 })
-export class WorkoutdaysPage {
+export class WorkoutdaysPage implements OnInit{
 
   @ViewChild('slider') slides: Slides;
- 
+
   workout: Workout;
 
   constructor(
-    private navCtrl: NavController, 
+    private navCtrl: NavController,
     private navParams: NavParams,
-    private dataService: DataServiceProvider) {
+    private dataService: DataServiceProvider) { }
+
+  workoutDaysPublisher: Subject<ExerciseSwitchModeEvent> = new Subject();
+
+  ngOnInit () {
     this.workout = this.navParams.get('workout');
   }
-  
-  workoutDaysPublisher: Subject<ExerciseSwitchModeEvent> = new Subject();
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad WorkoutdaysPage');
     if (this.slides) {
       const lastIndex = this.dataService.getLastSelectedWorkoutDay(this.workout.name);
       console.log('last index on view loaded', lastIndex)
-      
+
       setTimeout(() => {
         this.slides.slideTo(lastIndex)
-    }, 300); 
+    }, 300);
     }
   }
 

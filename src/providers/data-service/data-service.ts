@@ -7,7 +7,6 @@ export class DataServiceProvider {
 
   constructor(public http: HttpClient) {
     this.state = new StateCache();
-    //http.get('test')
   }
 
   private state: StateCache;
@@ -16,6 +15,11 @@ export class DataServiceProvider {
    }
   getLastSelectedWorkoutDay(workoutName: string): number {
     return this.state.getLastSelectedWorkoutDay(workoutName);
+   }
+
+   // future use only
+   getWorkout() {
+     return this.http.get('mock-url-for-future-use')
    }
 
 }

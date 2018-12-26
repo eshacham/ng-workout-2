@@ -1,26 +1,35 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing'
 import { DataServiceProvider } from './data-service';
 import { TestBed } from '@angular/core/testing';
-import { HttpClientMock } from '../../../test-config/mocks-ionic';
 
 describe('Data Service Provider', () => {
-    // beforeEach(async () => {
-    //     TestBed.configureTestingModule({
-    //         declarations: [DataServiceProvider],
-    //         imports: [
-    //         ],
-    //         providers: [
-    //             { provide: HttpClient, useClass: HttpClientMock }
-    //         ]
-    //     })
-    // });
+    let dataServiceProvider: DataServiceProvider;
+    let backend: HttpTestingController
+
+    beforeEach(() => {
+        TestBed.configureTestingModule({
+            imports: [ HttpClientTestingModule ],
+            providers: [ DataServiceProvider ]
+        })
+        backend = TestBed.get(HttpTestingController);
+        dataServiceProvider = TestBed.get(DataServiceProvider);
+    });
+
+    it('should get workout data - future use only', () => {
+        dataServiceProvider.getWorkout()
+        .subscribe(data => {
+            expect(data).toBe(mockResponse)
+        });
+
+        const mockResponse = { workout: { name: 'dont care' }}
+        backend.expectOne('mock-url-for-future-use').flush(mockResponse);
+    })
 
     describe('workout data state cache', () => {
-        let dataServiceProvider: DataServiceProvider;
+
         let workoutName: string;
 
         beforeEach(() => {
-            dataServiceProvider = new DataServiceProvider(null);
             workoutName = '1st-workout';
         })
 

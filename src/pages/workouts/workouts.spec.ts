@@ -89,4 +89,11 @@ describe('Page: WorkoutsPage', () => {
         expect(comp.workouts.length).toBe(3)
     });
 
+    it('should have a list of 3 workouts', async () => {
+        await comp.ngOnInit();
+        fixture.detectChanges()
+        let items = fixture.debugElement.queryAll(By.css('#workout-card'));
+        expect(items.length).toBe(3);
+    });
+
 });

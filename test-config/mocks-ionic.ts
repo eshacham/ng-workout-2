@@ -124,11 +124,11 @@ export class NavMock {
   }
 }
 
-export class HttpClientMock {
-  get () {
-    return 'test'
-  }
-}
+// export class HttpClientMock {
+//   get () {
+//     return 'test'
+//   }
+// }
 
 export class StorageMock {
   async ready () {}

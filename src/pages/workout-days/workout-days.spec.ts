@@ -14,17 +14,19 @@ import { WorkoutdaysPage } from './workout-days';
 import { WorkoutDayComponent } from '../../components/workout-day/workout-day';
 import { ExerciseThumbnailModule } from '../../components/exercise-thumbnail/exercise-thumbnail.module';
 import { DataServiceProvider } from '../../providers/data-service/data-service';
+import { Workout } from '../../shared/model/Workout';
 
 let comp: WorkoutdaysPage;
 let fixture: ComponentFixture<WorkoutdaysPage>;
 let de: DebugElement;
 let el: HTMLElement;
 let defaultWorkouts: DefaultWorkouts;
-
+let defaultFirstWorkout: Workout;
 
 describe('Page: WorkoutdaysPage', () => {
     beforeAll(()=> {
         defaultWorkouts = deserialize(DefaultWorkouts, json);
+        defaultFirstWorkout = defaultWorkouts.workouts[0]
     })
 
     beforeEach(async(() => {
@@ -50,6 +52,9 @@ describe('Page: WorkoutdaysPage', () => {
 
     afterEach(() => {
         fixture.destroy();
+        comp = null;
+        de = null;
+        el = null;
     })
 
     it('should be created',() => {
@@ -61,6 +66,23 @@ describe('Page: WorkoutdaysPage', () => {
         spyOn(navParams, 'get')
         comp.ngOnInit();
         expect(navParams.get).toHaveBeenCalledWith('workout');
+    })
+
+    it('should have a title header with the workout name',() => {
+        de = fixture.debugElement.query(By.css('ion-title'));
+        el = de.nativeElement;
+        comp.ngOnInit();
+        fixture.detectChanges();
+        expect(el.innerText).toContain(defaultFirstWorkout.name);
+    })
+
+    it('should have a slider with slide per workout day',() => {
+        de = fixture.debugElement.query(By.css('ion-slides'));
+        let slider = de.componentInstance;
+        comp.ngOnInit();
+        fixture.detectChanges();
+        let slides = fixture.debugElement.queryAll(By.css('ion-slide'));
+        expect(slides.length).toBe(defaultFirstWorkout.days.length);
     })
 
 });

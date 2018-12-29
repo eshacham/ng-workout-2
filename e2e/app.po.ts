@@ -18,4 +18,12 @@ export class WorkoutPage {
     return element.all(by.css('workout-card'));
   }
 
+  getTabs() {
+    return element.all(by.css('ion-tabs ion-tab'));
+  }
+
+  getTabsBars() {
+    return element.all(by.css('.tabbar .tab-button'));
+  }
+
 }

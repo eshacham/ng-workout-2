@@ -17,7 +17,7 @@
                     </exercise-variation>                        
                     
                 </ion-item>
-                <ion-item *ngIf='IsFrozen'>
+                <ion-item *ngIf='IsFrozen && exerciseSet'>
                     <ion-col *ngFor="let rep of exerciseSet.reps" 
                         class="rep" [ngClass]="getFrozenExerciseSetRepCellClass()">
                         <div *ngIf='rep.weight'>

@@ -98,7 +98,7 @@ export class ExerciseThumbnailComponent implements OnInit, OnDestroy {
       // so the parent has to re-create parentSubject on changes
       this.inWorkoutDayPublisher.unsubscribe();
     }
-  
+
     toggleEditExercise() {
       this.IsEditing = !this.IsEditing;
       this.emitExerciseActionEvent(ExerciseAction.Edit);
@@ -153,8 +153,16 @@ export class ExerciseThumbnailComponent implements OnInit, OnDestroy {
         return this.hasSet && this.exercise.sets[0] === exerciseSet;
     }
 
+    isLastInSet(exerciseSet: ExerciseSet): boolean {
+        return this.hasSet && this.exercise.sets[this.exercise.sets.length-1] === exerciseSet;
+    }
+
     isFirstSet(exerciseSet: ExerciseSet): boolean {
         return !this.hasSet || this.isFirstInSet(exerciseSet);
+    }
+
+    isLastSet(exerciseSet: ExerciseSet): boolean {
+        return !this.hasSet || this.isLastInSet(exerciseSet);
     }
 
     getTopBottomMarginClass(exerciseSet: ExerciseSet) {
@@ -273,7 +281,7 @@ export class ExerciseThumbnailComponent implements OnInit, OnDestroy {
       this.startTimedRep();
   }
 
-  nextRep (shouldRest) {
+  nextRep (shouldRest: boolean) {
       if (!this.isRepCompleted (this.activeRepIndex)) {
           this.completedReps.push(this.activeRepIndex);
       }

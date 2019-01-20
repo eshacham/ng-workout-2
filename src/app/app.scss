@@ -14,3 +14,35 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.tabs .tabbar, .toolbar-background {
+    background: color($colors, danger)
+}
+.button {
+    color: color($colors, light);
+}
+.button-clear,
+.toolbar-title,
+.tabs .tab-button[aria-selected=true],
+.tabs .tab-button[aria-selected=true] .tab-button-icon,
+.tabs .tab-button[aria-selected=true] .tab-button,
+.tabs .tab-button:hover:not(.disable-hover),
+.card-header,
+.bar-button-default,
+.bar-button-default.bar-button-default,
+.bar-button-clear-default {
+    color: color($colors, dark)
+}
+
+.content {
+    background: color($colors, dark);
+    color: color($colors, danger)
+}
+.item {
+    background-color: color($colors, dark);
+    color: color($colors, light)
+}
+ion-app.ios [padding] .scroll-content,
+ion-app.md [padding] .scroll-content {
+    padding: 0px;
+}

@@ -1,4 +1,7 @@
 workout-day {
+    h3 {
+        color: color($colors, dark)!important;
+    }
     #workout-day-list-col {
         padding: 0px!important;
     }
@@ -7,7 +10,7 @@ workout-day {
         overflow-y: scroll;
         overflow-x: hidden;
         margin-bottom: 0px;
-    }; 
+    };
     #workout-day-list-item {
         padding-left: 0px;
         margin: 1px;

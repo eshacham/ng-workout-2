@@ -19,13 +19,15 @@ exercise-thumbnail {
         margin: 2px 0px 2px 0px ;
     }
     .nonActiveRep {
-        background: #17183b;
-        color: rgb(233, 185, 55)
+        background: color($colors, secondary);;
+        color: color($colors, primary);
     }
-
+    .button-clear {
+        color: color($colors, primary);
+    }
     .activeRep {
-        background: rgb(233, 185, 55);
-        color: #17183b;
+        background: color($colors, danger);
+        color: color($colors, dark);;
     }
 
     .noTopMargin {

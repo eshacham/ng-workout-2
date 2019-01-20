@@ -16,8 +16,7 @@
                                 <exercise-variation text-wrap text-end
                                     #variationComponent [exerciseSet]="exerciseSet" >
                                 </exercise-variation>
-
-                                <button ion-button icon-only clear float-right *ngIf="isLastSet(exerciseSet)"
+                                <button ion-button icon-only clear float-right
                                 (click)="runExercise()">
                                     <ion-icon name="play"></ion-icon>
                                 </button>
@@ -63,8 +62,8 @@
                                 <ion-icon *ngIf='isRepCompleted(i)' name="checkmark"></ion-icon>
                             </h4>
                         </div>
-                        <div class='text-center' *ngIf="isTimedRepRemaining(i)">{{timedRepRemaining}} Seconds
-                        </div>
+                        <h3 text-center *ngIf="isTimedRepRemaining(i)">{{timedRepRemaining}} Seconds
+                        </h3>
                     </ion-col>
                 </ion-row>
                 <ion-row justify-content-center>
@@ -78,7 +77,8 @@
                             [disabled]="!isPrevRepAvailable" (click)="prevRep()">
                             <ion-icon name="arrow-dropleft"></ion-icon>
                         </button>
-                        <button ion-button class="btn-success btn-lg col-sm-2 activeRep" (click)="nextRep(true)">
+                        <button ion-button class="btn-success btn-lg col-sm-2"
+                            (click)="nextRep(true)">
                             Done!
                         </button>
                         <button ion-button icon-only clear

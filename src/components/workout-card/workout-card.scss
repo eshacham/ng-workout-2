@@ -1,14 +1,19 @@
 workout-card {
     ion-card {
-        background: yellowgreen!important;
+        background: color($colors, light)!important;
         p {
-            color: brown!important;
+            color: color($colors, primary)!important;
         }
         a {
             cursor: pointer!important;
+            color: color($colors,dark);
         }
         ion-item {
-            background: yellowgreen!important;
+            background: color($colors, danger)!important;
+        }
+        .badge {
+            color: color($colors, light);
+            background-color: color($colors, dark);
         }
     }
 }

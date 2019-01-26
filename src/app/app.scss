@@ -46,3 +46,13 @@ ion-app.ios [padding] .scroll-content,
 ion-app.md [padding] .scroll-content {
     padding: 0px;
 }
+.swiper-pagination-bullet {
+    background: color($colors, light)
+}
+.swiper-pagination-bullet-active {
+    background: color($colors, danger);
+}
+.scroll-content {
+    overflow-y: hidden
+}
+

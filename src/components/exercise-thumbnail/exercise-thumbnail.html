@@ -68,7 +68,8 @@
                 </ion-row>
                 <ion-row justify-content-center>
                     <div *ngIf="isResting">
-                        <button ion-button class="btn-warning btn-lg col-sm-4 col-sm-offset-4 activeRep" (click)="skipRest()">
+                        <button ion-button class="btn-warning btn-lg col-sm-4 col-sm-offset-4" 
+                            (click)="skipRest()">
                             Rest {{timedRestRemaining}} Seconds or Skip
                         </button>
                     </div>

@@ -1,4 +1,6 @@
 ion-slide {
     display: block!important;
-    background: color($colors, danger);
+}
+ion-content {
+   background: color($colors, primary)!important;  
 }

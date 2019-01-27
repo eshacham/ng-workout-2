@@ -1233,11 +1233,15 @@ export const json = { workouts: [{
         ]
     }, {
        'id': 2,
-       'name': 'default empty workout!' ,
+       'name': 'default empty workout 1' ,
        'description': 'this is the description of the workout and should not be too long...'
     }, {
         'id': 3,
         'name': 'default empty workout 2' ,
+        'description': 'this is the description # 2 of the workout and it\'s shorter.'
+     }, {
+        'id': 4,
+        'name': 'default empty workout 3' ,
         'description': 'this is the description # 2 of the workout and it\'s shorter.'
      }]
 }

@@ -1,18 +1,25 @@
 workout-card {
+    .card{
+        margin-left: 16px;
+    }
     ion-card {
-        background: color($colors, light)!important;
+        ion-card-header{
+            color: color($colors, secondary)!important;
+        }
+        background: color($colors, dark)!important;
         p {
             color: color($colors, primary)!important;
         }
-        a {
-            cursor: pointer!important;
-            color: color($colors,dark);
+        ion-label {
+            //cursor: pointer!important;
+            color: color($colors, dark);
         }
         ion-item {
-            background: color($colors, danger)!important;
+            background: color($colors, light)!important;
+            cursor: pointer!important;
         }
         .badge {
-            color: color($colors, light);
+            color: color($colors, danger);
             background-color: color($colors, dark);
         }
     }

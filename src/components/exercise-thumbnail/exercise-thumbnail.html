@@ -92,7 +92,17 @@
         </div>
     </div>
     <div *ngSwitchCase="displayMode.Edit">
-
+        <ion-list id='exercise-set-list'>
+            <ion-item *ngFor="let exerciseSet of exercise.sets"
+                    id='exercise-set-list-item'>
+                <ion-thumbnail item-start>
+                    <img src={{exerciseSet.imageUrl}} />
+                </ion-thumbnail>
+                <h2 text-wrap>{{exerciseSet.name}}</h2>
+                <exercise-variation [exerciseSet]="exerciseSet">
+                </exercise-variation>
+            </ion-item>
+        </ion-list>
     </div>
     <div *ngSwitchDefault>
         <ion-list id='exercise-set-list' no-lines>

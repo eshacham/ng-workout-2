@@ -34,15 +34,15 @@
       </ion-list>
     </ion-col>
   </ion-row>
-  <ion-row align-items-center *ngIf="IsEditMode" >
+  <ion-row *ngIf="IsEditMode" id='workout-day-last-row' >
     <ion-col col-4 >
       <button ion-button icon-only clear (click)="addExercise()">
-        <ion-icon name="add"></ion-icon>Excersice
+        <ion-icon name="add"></ion-icon><ion-label>Exercise</ion-label>
       </button>
     </ion-col>
     <ion-col col-4 offset-4>
         <button ion-button icon-only clear (click)="saveChanges()">
-          <ion-icon name="add"></ion-icon>Day
+          <ion-icon name="add"></ion-icon><ion-label>Day</ion-label>
         </button>
       </ion-col>
   </ion-row>

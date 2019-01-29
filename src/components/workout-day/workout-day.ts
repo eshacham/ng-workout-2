@@ -68,7 +68,7 @@ export class WorkoutDayComponent implements OnInit, OnDestroy {
     switch (exerciseAction) {
         case ExerciseAction.Completed:
             console.log('workout-day: receieved completed event: ', event.exerciseIndex);
-            this.handleExersiceSetComletion(event.exerciseIndex);
+            this.handleExerciseSetCompletion(event.exerciseIndex);
             break;
         case ExerciseAction.Delete:
             console.log('workout-day: receieved delete event: ', event.exercise);
@@ -126,7 +126,7 @@ export class WorkoutDayComponent implements OnInit, OnDestroy {
       }
   }
 
-  handleExersiceSetComletion(exerciseSetIndex: number) {
+  handleExerciseSetCompletion(exerciseSetIndex: number) {
       if (this.workoutDay.exercises.length > exerciseSetIndex) {
           this.startExercise(exerciseSetIndex + 1);
       } else {

@@ -3,12 +3,13 @@ workout-day {
         color: color($colors, dark)!important;
     }
     #workout-day-list-col {
-        margin-left: 10px!important;
+        margin-left: 15px!important;
         margin-right: -10px!important;
         margin-top: -7px!important;
     }
     #workout-day-list {
         height: 70vh;
+        width: 100vw;
         overflow-y: scroll;
         overflow-x: hidden;
         margin-bottom: 0px;

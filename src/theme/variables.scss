@@ -66,19 +66,19 @@ $colors: (
 );
 
 $colors: (
-  secondary: #a2a09d,
-  dark:      #363636,
-  danger:    #d94e01,
-  light:     #f5f2eb,
-  primary:   #c1beb9
-);
-
-$colors: (
   secondary: #b0842b,
   dark:      #282320,
   danger:    #a92b12,
   light:     #eed29e,
   primary:   #b3a189
+);
+
+$colors: (
+  light:    #0c0c0c,
+  primary:  #363636,
+  dark:     #d94e01,
+  secondary:#f5f2eb,
+  danger:   #c1beb9
 );
 
 // App iOS Variables

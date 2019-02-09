@@ -13,6 +13,7 @@ exercise-thumbnail {
     };
     #exercise-set-list-item {
         padding-left: 0px;
+        color: color($colors, primary);
     };
     .rep {
         // height: 80px;
@@ -24,6 +25,10 @@ exercise-thumbnail {
     }
     .button-clear {
         color: color($colors, primary);
+    }
+    .et-button {
+        color: color($colors, dark);
+        background: color($colors, danger);
     }
     .activeRep {
         background: color($colors, danger);

@@ -3,22 +3,22 @@ workout-card {
         margin-left: 16px;
     }
     ion-card {
+        background: color($colors, dark)!important;
         ion-card-header{
             color: color($colors, secondary)!important;
         }
-        background: color($colors, dark)!important;
         p {
             color: color($colors, primary)!important;
         }
         ion-label {
-            color: color($colors, dark);
+            color: color($colors, secondary);
         }
         ion-item {
-            background: color($colors, light)!important;
+            background: color($colors, primary)!important;
             cursor: pointer!important;
         }
         .badge {
-            color: color($colors, danger);
+            color: color($colors, secondary);
             background-color: color($colors, dark);
         }
     }

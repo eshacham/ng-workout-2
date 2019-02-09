@@ -13,26 +13,26 @@ exercise-thumbnail {
     };
     #exercise-set-list-item {
         padding-left: 0px;
-        color: color($colors, primary);
+        color: color($colors, secondary);
     };
     .rep {
         // height: 80px;
         margin: 2px 0px 2px 0px ;
     }
     .nonActiveRep {
-        background: color($colors, secondary);;
-        color: color($colors, primary);
+        background: color($colors, light);;
+        color: color($colors, secondary);
     }
     .button-clear {
-        color: color($colors, primary);
+        color: color($colors, secondary);
     }
     .et-button {
-        color: color($colors, dark);
+        color: color($colors, primary);
         background: color($colors, danger);
     }
     .activeRep {
         background: color($colors, danger);
-        color: color($colors, dark);;
+        color: color($colors, primary);;
     }
 
     .noTopMargin {

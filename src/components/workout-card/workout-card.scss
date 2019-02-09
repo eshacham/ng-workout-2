@@ -3,23 +3,23 @@ workout-card {
         margin-left: 16px;
     }
     ion-card {
-        background: color($colors, dark)!important;
+        background: color($colors, primary)!important;
         ion-card-header{
-            color: color($colors, secondary)!important;
+            color: color($colors, light)!important;
         }
         p {
-            color: color($colors, primary)!important;
+            color: color($colors, secondary)!important;
         }
         ion-label {
-            color: color($colors, secondary);
+            color: color($colors, light);
         }
         ion-item {
-            background: color($colors, primary)!important;
+            background: color($colors, secondary)!important;
             cursor: pointer!important;
         }
         .badge {
-            color: color($colors, secondary);
-            background-color: color($colors, dark);
+            color: color($colors, light);
+            background-color: color($colors, primary);
         }
     }
 }

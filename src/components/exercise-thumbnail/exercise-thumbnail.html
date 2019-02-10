@@ -13,7 +13,7 @@
                             </ion-col>
                             <ion-col>
                                 <h2 text-wrap text-start>{{exerciseSet.name}} margin-bottom</h2>
-                                <exercise-variation text-wrap text-end
+                                <exercise-variation text-wrap
                                     #variationComponent [exerciseSet]="exerciseSet" >
                                 </exercise-variation>
                                 <button ion-button icon-only clear float-right
@@ -30,7 +30,7 @@
             <ion-grid>
                 <ion-row>
                     <ion-col *ngFor="let exerciseSet of exercise.sets" >
-                        <h3 text-wrap text-center>{{exerciseSet.name}}</h3>
+                        <ion-label text-wrap text-center>{{exerciseSet.name}}</ion-label>
                     </ion-col>
                 </ion-row>
                 <ion-row>

@@ -33,53 +33,54 @@ $app-direction: ltr;
 // colors so you can add, rename and remove colors as needed.
 // The "primary" color is the only required color in the map.
 
+// $colors: ( // ionic original
+//   primary:    #488aff,
+//   secondary:  #32db64,
+//   danger:     #f53d3d,
+//   light:      #f4f4f4,
+//   dark:       #222
+// );
+
+
 $colors: (
-  primary:    #488aff,
-  secondary:  #32db64,
-  danger:     #f53d3d,
-  light:      #f4f4f4,
-  dark:       #222
+  primary:  #baad9a,
+  secondary:#171d13,
+  dark:     #050000,
+  light:    #aa3539,
+  danger:   #3b6235
 );
 
 $colors: (
-  primary:    #677260,
-  secondary:  #969997,
-  danger:     #debf1d,
-  light:      #a7b1c6,
-  dark:       #24262e
+  primary:   #282320,
+  secondary: #eed29e,
+  dark:      #b3a189,
+  light:     #b0842b,
+  danger:    #a92b12
 );
 
 $colors: (
-  secondary: #6b5d4e,
-  dark:      #131010,
-  danger:    #f51724,
-  light:     #7d7478,
-  primary:   #003576
-);
+  primary:    #827d7f,
+  secondary:  #1f1919,
+  dark:       #022b5c,
+  danger:     #9c0f18,
+  light:      #594939
+  );
 
-$colors: (
-  secondary: #3b6235,
-  dark:      #050000,
-  danger:    #6c3133,
-  light:     #baad9a,
-  primary:   #171d13
-);
+  $colors: (
+    primary:  #24262e,
+    secondary:#677260,
+    danger:   #969997,
+    light:    #a7b1c6,
+    dark:     #debf1d
+  );
 
-$colors: (
-  secondary: #b0842b,
-  dark:      #282320,
-  danger:    #a92b12,
-  light:     #eed29e,
-  primary:   #b3a189
-);
-
-$colors: (
-  primary:  #d94e01,
-  secondary:#363636,
-  dark:     #0c0c0c,
-  light:    #f5f2eb,
-  danger:   #c1beb9,
-);
+  $colors: (
+    primary:  #d94e01, // buttons, workout card, sets bg
+    secondary:#363636, // workout bg, text
+    dark:     #0c0c0c, // text
+    light:    #f5f2eb, // text, nac-rep
+    danger:   #c1beb9, // nav bar, ac-rep
+  );
 
 // App iOS Variables
 // --------------------------------------------------

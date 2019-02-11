@@ -42,10 +42,6 @@
     background-color: color($colors, primary);
     color: color($colors, dark)
 }
-ion-app.ios [padding] .scroll-content,
-ion-app.md [padding] .scroll-content {
-    padding: 0px;
-}
 .swiper-pagination-bullet {
     background: color($colors, danger)
 }
@@ -55,6 +51,8 @@ ion-app.md [padding] .scroll-content {
 .scroll-content {
     overflow-y: scroll;
     overflow-x: hidden;
-    margin-right: -52px;
-    padding-right: 52px;
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
 }

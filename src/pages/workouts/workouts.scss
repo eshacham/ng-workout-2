@@ -1,8 +1,12 @@
-page-workouts {
-
-}
 #workout-card {
-    // padding-right: 2px!important;
-    padding-left: 7px!important;
     background: color($colors, secondary)!important;
+}
+ .item{
+     padding: 0px;
+     .item-inner {
+        padding-right: 0px!important;
+    }
+};
+.label{
+    margin: 11px 8px;
 }

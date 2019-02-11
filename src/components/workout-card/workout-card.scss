@@ -1,7 +1,4 @@
 workout-card {
-    .card{
-        margin-left: 16px;
-    }
     ion-card {
         background: color($colors, primary)!important;
         ion-card-header{
@@ -12,6 +9,7 @@ workout-card {
         }
         ion-label {
             color: color($colors, light);
+            padding: 8px;
         }
         ion-item {
             background: color($colors, secondary)!important;

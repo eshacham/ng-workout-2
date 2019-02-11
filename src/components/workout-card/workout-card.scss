@@ -1,5 +1,6 @@
 workout-card {
     ion-card {
+        border-radius: 10px!important;
         background: color($colors, primary)!important;
         ion-card-header{
             color: color($colors, light)!important;

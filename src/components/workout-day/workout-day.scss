@@ -3,25 +3,22 @@ workout-day {
     #workout-day-list-col {
         margin-top: -7px!important;
         padding-left: 0px;
+        padding-top: 0px;
         padding-right: 0px;
+        padding-bottom: 0px;
     }
     #workout-day-list {
         height: 70vh;
-        width: 100vw;
+        width: 92vw;
+        margin-left: 15px;
         overflow-y: scroll;
         overflow-x: hidden;
         margin-bottom: 0px;
+        background: color($colors, secondary)
     };
     #workout-day-list-item {
-        padding-left: 0px;
-        margin-left: 0px;
-        margin-right: 00px;
-        margin-top: 0px;
-        margin-bottom: 0px;
-    };
-
-    ion-label {
-        margin-left: 5px!important;
+        margin-bottom: 5px;
+        border-radius: 5px;
     };
     ion-grid {
         padding: 0px!important;

@@ -16,7 +16,6 @@ exercise-thumbnail {
         color: color($colors, dark);
     };
     .rep {
-        // height: 80px;
         margin: 2px 0px 2px 0px ;
     }
     .nonActiveRep {
@@ -42,6 +41,7 @@ exercise-thumbnail {
         margin-bottom: 0px;
     }
     .imageWrap {
-        display:inline-block;position:relative;
+        display: inline-block;
+        position: relative;
     }
 }

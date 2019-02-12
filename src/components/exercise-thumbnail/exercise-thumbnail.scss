@@ -15,6 +15,13 @@ exercise-thumbnail {
         padding-left: 0px;
         color: color($colors, dark);
     };
+    #exercise-set-list-item-tight {
+        padding-left: 0px;
+        color: color($colors, dark);
+        .label {
+            margin: 0px -15px -15px -20px;
+        }
+    };
     .rep {
         margin: 2px 0px 2px 0px ;
     }

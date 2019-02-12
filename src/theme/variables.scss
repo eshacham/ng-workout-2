@@ -58,20 +58,13 @@ $colors: (
   danger:    #a92b12
 );
 
-$colors: (
-  primary:    #827d7f,
-  secondary:  #1f1919,
-  dark:       #022b5c,
-  danger:     #9c0f18,
-  light:      #594939
-  );
 
-  $colors: (
-    primary:  #24262e,
-    secondary:#677260,
-    danger:   #969997,
-    light:    #a7b1c6,
-    dark:     #debf1d
+$colors: (
+  primary:  #24262e,
+  secondary:#677260,
+  danger:   #969997,
+  light:    #a7b1c6,
+  dark:     #debf1d
   );
 
   $colors: (
@@ -80,8 +73,15 @@ $colors: (
     dark:     #0c0c0c, // text
     light:    #f5f2eb, // text, nac-rep
     danger:   #c1beb9, // nav bar, ac-rep
-  );
+    );
 
+    $colors: (
+      primary:    #827d7f,
+      secondary:  #1f1919,
+      dark:       #022b5c,
+      danger:     #9c0f18,
+      light:      #594939
+      );
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here

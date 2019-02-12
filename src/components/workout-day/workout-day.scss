@@ -8,7 +8,7 @@ workout-day {
         padding-bottom: 0px;
     }
     #workout-day-list {
-        height: 70vh;
+        height: 71vh;
         width: 92vw;
         margin-left: 15px;
         overflow-y: scroll;
@@ -24,7 +24,9 @@ workout-day {
         padding: 0px!important;
     }
     #workout-day-last-row {
-        margin-top: -15px;
-        margin-left: 15px;
+        margin-top: -12px;
+    }
+    .label {
+        margin: 10px;
     }
 }

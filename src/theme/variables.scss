@@ -65,23 +65,26 @@ $colors: (
   danger:   #969997,
   light:    #a7b1c6,
   dark:     #debf1d
-  );
+);
 
-  $colors: (
-    primary:  #d94e01, // buttons, workout card, sets bg
-    secondary:#363636, // workout bg, text
-    dark:     #0c0c0c, // text
-    light:    #f5f2eb, // text, nac-rep
-    danger:   #c1beb9, // nav bar, ac-rep
-    );
+$colors: (
+  primary:    #827d7f,
+  secondary:  #1f1919,
+  dark:       #022b5c,
+  danger:     #9c0f18,
+  light:      #594939
+);
 
-    $colors: (
-      primary:    #827d7f,
-      secondary:  #1f1919,
-      dark:       #022b5c,
-      danger:     #9c0f18,
-      light:      #594939
-      );
+
+$colors: (
+  primary:  #d94e01, // buttons, workout card, sets bg
+  secondary:#363636, // workout bg, text
+  dark:     #0c0c0c, // text
+  light:    #f5f2eb, // text, nac-rep
+  danger:   #c1beb9, // nav bar, ac-rep
+);
+
+
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here

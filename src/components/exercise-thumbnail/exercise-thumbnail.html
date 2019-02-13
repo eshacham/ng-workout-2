@@ -99,8 +99,20 @@
                     <img src={{exerciseSet.imageUrl}} />
                 </ion-thumbnail>
                 <h2 text-wrap>{{exerciseSet.name}}</h2>
-                <exercise-variation [exerciseSet]="exerciseSet">
+                <exercise-variation
+                    [exerciseSet]="exerciseSet"
+                    [isEditing]="IsEditing">
                 </exercise-variation>
+                <button ion-button icon-only clear float-right
+                    (click)="deleteExercise()">
+                    <ion-icon name="trash"></ion-icon>
+                </button>
+                <button ion-button icon-only clear float-left
+                    (click)="toggleEditExercise()">
+                    <ion-icon
+                        [name]="IsEditing ? 'arrow-dropup' : 'arrow-dropdown'">
+                    </ion-icon>
+                </button>
             </ion-item>
         </ion-list>
     </div>

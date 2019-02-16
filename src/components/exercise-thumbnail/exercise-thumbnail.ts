@@ -180,7 +180,7 @@ export class ExerciseThumbnailComponent implements OnInit, OnDestroy {
       return [returnClass];
   }
 
-  getRunningExerciseSetRepCellClass(repIndex) {
+  getRunningExerciseSetRepCellClass(repIndex: number) {
       const classes = this.getExerciseSetRepCellClass();
       if (this.activeRepIndex === repIndex) {
           classes.push('activeRep', 'fadeOutAndIn');

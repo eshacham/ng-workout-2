@@ -1,8 +1,27 @@
 import { Component, Input } from '@angular/core';
-import { SimpleChange } from '@angular/core/src/change_detection/change_detection_util';
+import { PopoverController, NavParams } from 'ionic-angular';
 import { ExerciseSet } from '../../shared/model/ExerciseSet';
 import { GripType, GripWidth, WeightType } from '../../shared/enums';
 
+@Component({
+  templateUrl: 'exercise-variation-popover.html'
+})
+export class ExerciseVariationPopoverPage {
+  exerciseSet: ExerciseSet;
+
+  weightTypes = Object.keys(WeightType);
+  gripTypes = Object.keys(GripType);
+  gripWidths = Object.keys(GripWidth);
+
+  constructor(private navParams: NavParams) {
+  }
+
+  ngOnInit() {
+    if (this.navParams.data) {
+      this.exerciseSet = this.navParams.data.exerciseSet;
+    }
+  }
+}
 
 @Component({
   selector: 'exercise-variation',
@@ -11,14 +30,14 @@ import { GripType, GripWidth, WeightType } from '../../shared/enums';
 export class ExerciseVariationComponent {
 
   @Input() exerciseSet: ExerciseSet;
-  @Input() isEditing: boolean;
+  @Input() inEditMode: boolean;
 
-  inEditMode: boolean;
-    get InEditMode(): boolean {
-        return this.inEditMode;
-    }
+  get InEditMode(): boolean {
+      return this.inEditMode;
+  }
 
-  constructor() {}
+  constructor(private popoverCtrl: PopoverController) {
+  }
 
   get exerciseDetails(): string {
     const details = [];
@@ -39,11 +58,14 @@ export class ExerciseVariationComponent {
   gripTypes = Object.keys(GripType);
   gripWidths = Object.keys(GripWidth);
 
-  ngOnChanges(changes: {[propKey: string]: SimpleChange}) {
-      const change = changes['isEditing'];
-      if (change) {
-          this.inEditMode = change.currentValue;
-      }
+  presentPopover(event) {
+    let popover = this.popoverCtrl.create(ExerciseVariationPopoverPage, {
+      exerciseSet: this.exerciseSet
+    });
+
+    popover.present({
+      ev: event
+    });
   }
 
 }

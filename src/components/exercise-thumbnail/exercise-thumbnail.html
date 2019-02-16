@@ -92,29 +92,52 @@
         </div>
     </div>
     <div *ngSwitchCase="displayMode.Edit">
-        <ion-list id='exercise-set-list'>
-            <ion-item *ngFor="let exerciseSet of exercise.sets"
-                    id='exercise-set-list-item'>
-                <ion-thumbnail item-start>
-                    <img src={{exerciseSet.imageUrl}} />
-                </ion-thumbnail>
-                <h2 text-wrap>{{exerciseSet.name}}</h2>
-                <exercise-variation
+        <ion-grid>
+            <ion-row>
+                <ion-col *ngFor="let exerciseSet of exercise.sets" >
+                    <ion-label text-wrap text-center>{{exerciseSet.name}}</ion-label>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col *ngFor="let exerciseSet of exercise.sets">
+                <ion-row justify-content-center align-items-center>
+                    <ion-thumbnail >
+                        <img src={{exerciseSet.imageUrl}} />
+                    </ion-thumbnail>
+                    <button ion-button icon-only clear
+                        (click)="deleteExercise()">
+                        <ion-icon name="trash"></ion-icon>
+                    </button>
+                </ion-row>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col *ngFor="let exerciseSet of exercise.sets" >
+                    <exercise-variation text-wrap text-center
                     [exerciseSet]="exerciseSet"
-                    [isEditing]="IsEditing">
-                </exercise-variation>
-                <button ion-button icon-only clear float-right
-                    (click)="deleteExercise()">
-                    <ion-icon name="trash"></ion-icon>
-                </button>
-                <button ion-button icon-only clear float-left
-                    (click)="toggleEditExercise()">
-                    <ion-icon
-                        [name]="IsEditing ? 'arrow-dropup' : 'arrow-dropdown'">
-                    </ion-icon>
-                </button>
-            </ion-item>
-        </ion-list>
+                    [inEditMode]="true">
+                    </exercise-variation>
+                </ion-col>
+            </ion-row>
+            <ion-row *ngFor="let exerciseSet of exercise.sets">
+                <ion-col *ngFor="let rep of exerciseSet.reps; let i = index" class="rep"
+                        class="rep nonActiveRep" padding-vertical>
+                    <div *ngIf='rep.weight'>
+                        <h4 text-center>{{rep.weight}}<small>{{' ' + weightUnit[rep.weightUnit]}}</small></h4>
+                    </div>
+                    <div *ngIf='rep.times'>
+                        <h4 text-center>{{rep.times}}<small>{{' Times'}}</small>
+                        </h4>
+                    </div>
+                    <div *ngIf='rep.seconds'>
+                        <h4 text-center>{{rep.seconds}}<small>{{' Seconds'}}</small>
+                        </h4>
+                    </div>
+                    <h3 text-center *ngIf="isTimedRepRemaining(i)">{{timedRepRemaining}} Seconds
+                    </h3>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
     </div>
     <div *ngSwitchDefault>
         <ion-list id='exercise-set-list' no-lines>

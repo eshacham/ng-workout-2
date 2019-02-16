@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
-import { ExerciseVariationComponent } from './exercise-variation';
+import {
+	ExerciseVariationComponent,
+	ExerciseVariationPopoverPage } from './exercise-variation';
 import { IonicPageModule } from 'ionic-angular';
 
 @NgModule({
 	declarations: [
-		ExerciseVariationComponent
+		ExerciseVariationComponent,
+		ExerciseVariationPopoverPage
 	],
 	imports: [
 		IonicPageModule.forChild(ExerciseVariationComponent),
@@ -13,7 +16,8 @@ import { IonicPageModule } from 'ionic-angular';
 		ExerciseVariationComponent
 	],
 	entryComponents: [
-		ExerciseVariationComponent
+		ExerciseVariationComponent,
+		ExerciseVariationPopoverPage
 	]
 })
 export class ExerciseVariationModule {}

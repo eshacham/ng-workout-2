@@ -10,7 +10,7 @@ export class ExerciseSet {
     @JsonProperty('imageUrl')
     imageUrl: string;
 
-    @JsonProperty('grip')
+    @JsonProperty({clazz: Grip, name: 'grip'})
     theGrip: Grip;
 
     @JsonProperty('repetition')
@@ -32,14 +32,14 @@ export class ExerciseSet {
     restAfterExercise: number;
 
     constructor () {
-        this.name = undefined;
-        this.imageUrl = undefined;
-        this.theGrip = undefined;
-        this.repSpeed = undefined;
-        this.typeOfWeight = WeightType.NoWeight;
-        this.isFavorite = undefined;
-        this.restBetweenReps = undefined;
-        this.restAfterExercise = undefined;
-        this.reps = undefined;
+        this.name = void 0;
+        this.imageUrl = void 0;
+        this.theGrip = void 0;
+        this.repSpeed = void 0;
+        this.typeOfWeight = void 0;
+        this.isFavorite = void 0;
+        this.restBetweenReps = void 0;
+        this.restAfterExercise = void 0;
+        this.reps = void 0;
     }
 }

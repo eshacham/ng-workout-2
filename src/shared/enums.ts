@@ -4,19 +4,19 @@ export enum WeightType {
     Dumbbell = 'Dumbbell',
     Kettleball = 'Kettlebell',
     Plate = 'Plate',
-    NoWeight = ''
+    NoWeight = 'N/A'
 }
 export enum GripType {
     Underhand = 'Underhand',
     Overhand = 'Overhand',
     Neutral = 'Neutral',
-    NoGrip = ''
+    NoGrip = 'N/A'
 }
 export enum GripWidth {
     Narrow = 'Narrow',
     Normal = 'Normal',
     Wide = 'Wide',
-    NoGrip = ''
+    NoGrip = 'N/A'
 }
 export enum RepetitionSpeed {
     OneOne = '1:1',

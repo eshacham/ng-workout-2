@@ -8,8 +8,8 @@ export class Grip {
     @JsonProperty('width')
     width: GripWidth;
 
-    constructor() {
-        this.typeOfGrip = undefined;
-        this.width = undefined;
+    constructor(typeOfGrip = GripType.NoGrip, width = GripWidth.NoGrip) {
+        this.typeOfGrip = typeOfGrip;
+        this.width = width;
     }
 }

@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { PopoverController, NavParams } from 'ionic-angular';
 import { ExerciseSet } from '../../shared/model/ExerciseSet';
 import { GripType, GripWidth, WeightType } from '../../shared/enums';
+import { Grip } from '../../shared/model/Grip';
 
 @Component({
   templateUrl: 'exercise-variation-popover.html'
@@ -9,18 +10,21 @@ import { GripType, GripWidth, WeightType } from '../../shared/enums';
 export class ExerciseVariationPopoverPage {
   exerciseSet: ExerciseSet;
 
-  weightTypes = Object.keys(WeightType);
-  gripTypes = Object.keys(GripType);
-  gripWidths = Object.keys(GripWidth);
+  weightTypes: string[];
+  gripTypes: string[];
+  gripWidths: string[];
 
   constructor(private navParams: NavParams) {
   }
 
   ngOnInit() {
-    if (this.navParams.data) {
-      this.exerciseSet = this.navParams.data.exerciseSet;
-    }
+    this.exerciseSet = this.navParams.data.exerciseSet;
+
+    this.gripTypes = Object.keys(GripType).map(key => GripType[key])
+    this.weightTypes = Object.keys(WeightType).map(key => WeightType[key])
+    this.gripWidths = Object.keys(GripWidth).map(key => GripWidth[key])
   }
+
 }
 
 @Component({
@@ -39,24 +43,32 @@ export class ExerciseVariationComponent {
   constructor(private popoverCtrl: PopoverController) {
   }
 
+  ngOnInit() {
+    if (!this.exerciseSet.theGrip) {
+      this.exerciseSet.theGrip = new Grip();
+    }
+    if (!this.exerciseSet.typeOfWeight) {
+      this.exerciseSet.typeOfWeight = WeightType.NoWeight;
+    }
+    this.exerciseSet.theGrip.typeOfGrip = GripType[this.exerciseSet.theGrip.typeOfGrip] || GripType.NoGrip;
+    this.exerciseSet.theGrip.width = GripWidth[this.exerciseSet.theGrip.width] || GripWidth.NoGrip;
+    this.exerciseSet.typeOfWeight = WeightType[this.exerciseSet.typeOfWeight] || WeightType.NoWeight;
+  }
+
   get exerciseDetails(): string {
     const details = [];
 
-    if (this.exerciseSet.theGrip && this.exerciseSet.theGrip.typeOfGrip) {
+    if (this.exerciseSet.theGrip.typeOfGrip !== GripType.NoGrip) {
         details.push(this.exerciseSet.theGrip.typeOfGrip);
     }
-    if (this.exerciseSet.theGrip && this.exerciseSet.theGrip.width) {
+    if (this.exerciseSet.theGrip.width !== GripWidth.NoGrip) {
         details.push(this.exerciseSet.theGrip.width);
     }
-    if (this.exerciseSet.typeOfWeight) {
+    if (this.exerciseSet.typeOfWeight !== WeightType.NoWeight) {
         details.push(this.exerciseSet.typeOfWeight);
     }
-    return details.join(' | ');
+    return details.length ? details.join(' | ') : '...';
   }
-
-  weightTypes = Object.keys(WeightType);
-  gripTypes = Object.keys(GripType);
-  gripWidths = Object.keys(GripWidth);
 
   presentPopover(event) {
     let popover = this.popoverCtrl.create(ExerciseVariationPopoverPage, {

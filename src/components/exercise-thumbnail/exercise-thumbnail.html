@@ -100,15 +100,15 @@
             </ion-row>
             <ion-row>
                 <ion-col *ngFor="let exerciseSet of exercise.sets">
-                <ion-row justify-content-center align-items-center>
-                    <ion-thumbnail >
-                        <img src={{exerciseSet.imageUrl}} />
-                    </ion-thumbnail>
-                    <button ion-button icon-only clear
-                        (click)="deleteExercise()">
-                        <ion-icon name="trash"></ion-icon>
-                    </button>
-                </ion-row>
+                    <ion-row justify-content-center align-items-center>
+                        <ion-thumbnail >
+                            <img src={{exerciseSet.imageUrl}} />
+                        </ion-thumbnail>
+                        <button ion-button icon-only clear
+                            (click)="deleteExercise()">
+                            <ion-icon name="trash"></ion-icon>
+                        </button>
+                    </ion-row>
                 </ion-col>
             </ion-row>
             <ion-row>

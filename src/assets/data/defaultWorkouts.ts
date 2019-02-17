@@ -1,9 +1,9 @@
 
-import { 
-    GripType, 
-    GripWidth, 
-    RepetitionSpeed, 
-    WeightType, 
+import {
+    GripType,
+    GripWidth,
+    RepetitionSpeed,
+    WeightType,
     WeightUnit } from "../../shared/enums";
 
 export const json = { workouts: [{
@@ -22,7 +22,7 @@ export const json = { workouts: [{
                                 'name': 'Bench Press, Wide Grip',
                                 'imageUrl': 'assets/images/BenchPressWideGrip.jpeg',
                                 'grip': {
-                                    'type': GripType.Overhand,
+                                    'type': 'N/A',
                                     'width': GripWidth.Wide,
                                 },
                                 'repetition': RepetitionSpeed.OneOne,

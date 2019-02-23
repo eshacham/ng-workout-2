@@ -21,7 +21,8 @@ export enum GripWidth {
 export enum RepetitionSpeed {
     OneOne = '1:1',
     TwoTwo = '2:2',
-    TwoFour = '2:4'
+    TwoFour = '2:4',
+    NA = 'N/A'
 }
 export enum WeightUnit {
     Lbs,

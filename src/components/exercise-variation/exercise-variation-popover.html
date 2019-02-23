@@ -29,4 +29,14 @@
     </ion-option>
 </ion-select>
 </ion-item>
+<ion-item>
+<ion-label>Speed</ion-label>
+<ion-select interface="popover"
+    [(ngModel)]="exerciseSet.repSpeed">
+    <ion-option *ngFor="let speed of repSpeeds"
+       value={{speed}}>
+       {{speed}}
+    </ion-option>
+</ion-select>
+</ion-item>
 </ion-list>

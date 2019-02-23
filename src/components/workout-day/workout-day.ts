@@ -62,7 +62,7 @@ export class WorkoutDayComponent implements OnInit, OnDestroy {
     // so the parent has to re-create parentSubject on changes
     this.inWorkoutDaysPublisher.unsubscribe();
   }
-  
+
   handleExerciseActionEvent(event: ExerciseActionEvent) {
     const exerciseAction: ExerciseAction = event.action;
     switch (exerciseAction) {
@@ -151,5 +151,11 @@ export class WorkoutDayComponent implements OnInit, OnDestroy {
           null,
           null,
           this.workoutDay.name));
+  }
+
+  reorderItems(indexes) {
+    let exercise = this.workoutDay.exercises[indexes.from];
+    this.workoutDay.exercises.splice(indexes.from, 1);
+    this.workoutDay.exercises.splice(indexes.to, 0, exercise);
   }
 }

@@ -95,7 +95,11 @@
         <ion-grid>
             <ion-row>
                 <ion-col *ngFor="let exerciseSet of exercise.sets" >
-                    <ion-label text-wrap text-center>{{exerciseSet.name}}</ion-label>
+                    <ion-item>
+                        <ion-input type="text" [(ngModel)]="exerciseSet.name"
+                            placeholder="Exercise Name">
+                        </ion-input>
+                    </ion-item>
                 </ion-col>
             </ion-row>
             <ion-row>

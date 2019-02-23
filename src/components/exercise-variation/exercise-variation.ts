@@ -26,7 +26,6 @@ export class ExerciseVariationPopoverPage {
     this.gripWidths = Object.keys(GripWidth).map(key => GripWidth[key])
     this.repSpeeds = Object.keys(RepetitionSpeed).map(key => RepetitionSpeed[key])
   }
-
 }
 
 @Component({

@@ -126,17 +126,20 @@
             <ion-row *ngFor="let exerciseSet of exercise.sets">
                 <ion-col *ngFor="let rep of exerciseSet.reps; let i = index" class="rep"
                         class="rep nonActiveRep" padding-vertical>
-                    <div *ngIf='rep.weight'>
-                        <h4 text-center>{{rep.weight}}<small>{{' ' + weightUnit[rep.weightUnit]}}</small></h4>
-                    </div>
-                    <div *ngIf='rep.times'>
-                        <h4 text-center>{{rep.times}}<small>{{' Times'}}</small>
-                        </h4>
-                    </div>
-                    <div *ngIf='rep.seconds'>
-                        <h4 text-center>{{rep.seconds}}<small>{{' Seconds'}}</small>
-                        </h4>
-                    </div>
+                    <h4 *ngIf='rep.weight' text-center class="clicker"
+                        (click)="presentPopover1($event)">
+                        {{rep.weight}}
+                        <small>{{' ' + weightUnit[rep.weightUnit]}}</small>
+                    </h4>
+                    <h4 *ngIf='rep.times' text-center class="clicker"
+                        (click)="presentPopover1($event)">
+                        {{rep.times}}
+                        <small>{{' Times'}}</small>
+                    </h4>
+                    <h4 *ngIf='rep.seconds'text-center class="clicker"
+                        (click)="presentPopover1($event)">
+                        {{rep.seconds}}<small>{{' Seconds'}}</small>
+                    </h4>
                     <h3 text-center *ngIf="isTimedRepRemaining(i)">{{timedRepRemaining}} Seconds
                     </h3>
                 </ion-col>

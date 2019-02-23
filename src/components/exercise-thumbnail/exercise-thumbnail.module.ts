@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
-import { ExerciseThumbnailComponent } from './exercise-thumbnail';
+import {
+	ExerciseThumbnailComponent,
+	ExerciseThumbnailPopoverPage } from './exercise-thumbnail';
 import { ExerciseVariationModule } from '../../components/exercise-variation/exercise-variation.module';
 
 import { IonicPageModule } from 'ionic-angular';
 
 @NgModule({
 	declarations: [
-		ExerciseThumbnailComponent
+		ExerciseThumbnailComponent,
+		ExerciseThumbnailPopoverPage
 	],
 	imports: [
 		IonicPageModule.forChild(ExerciseThumbnailComponent),
@@ -16,7 +19,8 @@ import { IonicPageModule } from 'ionic-angular';
 		ExerciseThumbnailComponent
 	],
 	entryComponents: [
-		ExerciseThumbnailComponent
+		ExerciseThumbnailComponent,
+		ExerciseThumbnailPopoverPage
 	]
 })
 export class ExerciseThumbnailModule {}

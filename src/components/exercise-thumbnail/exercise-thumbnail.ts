@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnInit, OnDestroy } from '@angular/core';
+import { PopoverController, NavParams } from 'ionic-angular';
 import { Subject } from 'rxjs/Subject';
 import { WeightUnit, DisplayMode, ExerciseAction } from '../../shared/enums';
 import { Exercise } from '../../shared/model/Exercise';
@@ -7,13 +8,26 @@ import { Rep } from '../../shared/model/Rep';
 import { ExerciseSwitchModeEvent } from '../../shared/model/ExerciseSwitchModeEvent';
 import { ExerciseActionEvent } from '../../shared/model/ExerciseActionEvent';
 
+@Component({
+    templateUrl: 'exercise-thumbnail-popover.html'
+  })
+  export class ExerciseThumbnailPopoverPage {
+    exercise: Exercise;
+
+    constructor(private navParams: NavParams) {
+    }
+
+    ngOnInit() {
+      this.exercise = this.navParams.data.exercise;
+    }
+  }
 
 @Component({
   selector: 'exercise-thumbnail',
   templateUrl: 'exercise-thumbnail.html'
 })
 export class ExerciseThumbnailComponent implements OnInit, OnDestroy {
-  constructor () {}
+  constructor (private popoverCtrl: PopoverController) {}
 
   @Input() workoutDayName: string;
   @Input('exercise') exercise: Exercise;
@@ -337,4 +351,13 @@ export class ExerciseThumbnailComponent implements OnInit, OnDestroy {
       return this.exercise.sets[0].reps.length === this.MINREPS;
   }
 
+  presentPopover1(event) {
+    let popover = this.popoverCtrl.create(ExerciseThumbnailPopoverPage, {
+        exercise: this.exercise
+    });
+
+    popover.present({
+      ev: event
+    });
+  }
 }

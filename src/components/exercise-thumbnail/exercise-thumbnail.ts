@@ -339,10 +339,13 @@ export class ExerciseThumbnailComponent implements OnInit, OnDestroy {
       if (!this.isMaxReps) {
           this.exercise.sets.forEach(set => {
               const newRep: Rep = new Rep();
-              newRep.weight = set.reps[0].weight;
-              newRep.weightUnit = set.reps[0].weightUnit,
-              newRep.times = set.reps[0].times,
-              newRep.seconds = set.reps[0].seconds;
+              const last = set.reps.length-1;
+              if (last >= 0) {
+              newRep.weight = set.reps[last].weight;
+              newRep.weightUnit = set.reps[last].weightUnit,
+              newRep.times = set.reps[last].times,
+              newRep.seconds = set.reps[last].seconds;
+            }
               set.reps.push(newRep);
           });
       }

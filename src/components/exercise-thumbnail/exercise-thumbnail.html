@@ -123,9 +123,9 @@
                     </exercise-variation>
                 </ion-col>
             </ion-row>
-            <ion-row *ngFor="let exerciseSet of exercise.sets">
+            <ion-row *ngFor="let exerciseSet of exercise.sets" justify-content-center>
                 <ion-col *ngFor="let rep of exerciseSet.reps; let i = index"
-                        class="rep nonActiveRep clicker" padding-vertical
+                        class="rep nonActiveRep clicker" padding-vertical justify-content-center
                         (click)="presentPopover($event, rep)">
                     <h4 *ngIf='rep.weight' text-center>
                         {{rep.weight}}

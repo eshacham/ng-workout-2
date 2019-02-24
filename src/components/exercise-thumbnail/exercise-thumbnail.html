@@ -146,16 +146,36 @@
                             (click)="deleteRep(i)" [disabled]="isMinReps">
                             <ion-icon name="trash"></ion-icon>
                         </button>
+                        <button ion-button icon-only clear
+                            (click)="addRep(i)" [disabled]="isMaxReps">
+                        <ion-icon name="add-circle"></ion-icon>
+                    </button>
                     </ion-row>
                 </ion-col>
             </ion-row>
             <ion-row justify-content-center>
-                <ion-col col-2 offset-10 no-padding>
-                    <button ion-button icon-only clear
-                        (click)="addRep()" [disabled]="isMaxReps">
-                        <ion-icon name="add"></ion-icon>
-                    </button>
+                <ion-col>
+                    <ion-list>
+                        <h3 text-center>
+                            Set Rest: {{exercise.sets[0].restBetweenReps}} seconds                        </h3>
+                        <ion-item>
+                            <ion-range [(ngModel)]="exercise.sets[0].restBetweenReps">
+                                <ion-icon range-left small name="repeat"></ion-icon>
+                                <ion-icon range-right name="repeat"></ion-icon>
+                            </ion-range>
+                        </ion-item>
+                        <h3 text-center>
+                            Exercise Rest: {{exercise.sets[0].restAfterExercise}} seconds                        </h3>
+                            <ion-item>
+                                <ion-range [(ngModel)]="exercise.sets[0].restAfterExercise">
+                                    <ion-icon range-left small name="body"></ion-icon>
+                                    <ion-icon range-right name="body"></ion-icon>
+                                </ion-range>
+                            </ion-item>
+                    </ion-list>
+
                 </ion-col>
+
             </ion-row>
         </ion-grid>
     </div>

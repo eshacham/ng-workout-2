@@ -61,15 +61,15 @@ exercise-thumbnail {
         animation: fadeinout 4s linear infinite;
         opacity: 1;
     }
-
     @-webkit-keyframes fadeinout {
         0%,100% { opacity: 1; }
         50% { opacity: 0.25; }
     }
-
     @keyframes fadeinout {
         0%,100% { opacity: 0.25; }
         50% { opacity: 1; }
     }
+    h3 {
+        color: color($colors, danger);
+    }
 }
-

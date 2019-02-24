@@ -335,18 +335,18 @@ export class ExerciseThumbnailComponent implements OnInit, OnDestroy {
       return this.completedReps.includes(index);
   }
 
-  addRep() {
+  addRep(index: number) {
       if (!this.isMaxReps) {
           this.exercise.sets.forEach(set => {
               const newRep: Rep = new Rep();
-              const last = set.reps.length-1;
-              if (last >= 0) {
-              newRep.weight = set.reps[last].weight;
-              newRep.weightUnit = set.reps[last].weightUnit,
-              newRep.times = set.reps[last].times,
-              newRep.seconds = set.reps[last].seconds;
-            }
-              set.reps.push(newRep);
+              //const last = set.reps.length-1;
+              //f (last >= 0) {
+              newRep.weight = set.reps[index].weight;
+              newRep.weightUnit = set.reps[index].weightUnit,
+              newRep.times = set.reps[index].times,
+              newRep.seconds = set.reps[index].seconds;
+            //}
+              set.reps.splice(index,0, newRep );
           });
       }
   }

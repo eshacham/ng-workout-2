@@ -114,3 +114,12 @@ ion-app.md [padding-vertical]{
 .header-ios {
     top: 18px!important;
 }
+.range-ios .range-knob {
+    background: color($colors, secondary);
+}
+.range-ios .range-bar {
+    background: color($colors, danger);
+}
+.range-ios .range-bar-active {
+    background: color($colors, secondary);
+}

@@ -1,7 +1,7 @@
 <ion-list>
     <ion-item>
         <ion-label>Weight:</ion-label>
-        <ion-input type="text" [(ngModel)]="rep.weight">
+        <ion-input type="number" [(ngModel)]="rep.weight">
         </ion-input>
         <ion-select interface="popover"
             [(ngModel)]="rep.weightUnit">
@@ -13,12 +13,12 @@
     </ion-item>
     <ion-item>
         <ion-label>Times:</ion-label>
-        <ion-input type="text" [(ngModel)]="rep.times">
+        <ion-input type="number" [(ngModel)]="rep.times">
         </ion-input>
     </ion-item>
     <ion-item>
         <ion-label>Seconds:</ion-label>
-        <ion-input type="text" [(ngModel)]="rep.seconds">
+        <ion-input type="number" [(ngModel)]="rep.seconds">
         </ion-input>
     </ion-item>
 </ion-list>

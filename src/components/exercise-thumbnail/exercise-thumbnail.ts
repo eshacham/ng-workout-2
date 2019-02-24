@@ -351,9 +351,11 @@ export class ExerciseThumbnailComponent implements OnInit, OnDestroy {
       }
   }
 
-  deleteRep() {
+  deleteRep(index: number) {
       if (!this.isMinReps) {
-          this.exercise.sets.forEach(set => set.reps.pop());
+          this.exercise.sets.forEach(set => {
+              set.reps.splice(index, 1);
+          })
       }
   }
 

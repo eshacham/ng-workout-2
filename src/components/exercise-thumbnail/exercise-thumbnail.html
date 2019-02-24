@@ -141,18 +141,22 @@
                     <h4 *ngIf='!rep.weight && !rep.times && !rep.seconds' text-center>
                         ...
                     </h4>
+                    <ion-row justify-content-center>
+                        <button ion-button icon-only clear
+                            (click)="deleteRep(i)" [disabled]="isMinReps">
+                            <ion-icon name="trash"></ion-icon>
+                        </button>
+                    </ion-row>
                 </ion-col>
             </ion-row>
             <ion-row justify-content-center>
-                <button ion-button icon-only clear
-                    (click)="deleteRep()" [disabled]="isMinReps">
-                    <ion-icon name="delete"></ion-icon>
-                </button>
-                <button ion-button icon-only clear
-                    (click)="addRep()" [disabled]="isMaxReps">
-                    <ion-icon name="add"></ion-icon>
-                </button>
-        </ion-row>
+                <ion-col col-2 offset-10 no-padding>
+                    <button ion-button icon-only clear
+                        (click)="addRep()" [disabled]="isMaxReps">
+                        <ion-icon name="add"></ion-icon>
+                    </button>
+                </ion-col>
+            </ion-row>
         </ion-grid>
     </div>
     <div *ngSwitchDefault>

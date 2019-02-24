@@ -39,7 +39,7 @@ export class ExerciseThumbnailComponent implements OnInit, OnDestroy {
 
   @Output() outEventEmitter = new EventEmitter<ExerciseActionEvent>();
 
-  MAXREPS = 4;
+  MAXREPS = 5;
   MINREPS = 1;
 
   activeRepIndex = 0;

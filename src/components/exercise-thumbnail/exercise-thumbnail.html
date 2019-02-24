@@ -143,6 +143,14 @@
                     </h4>
                 </ion-col>
             </ion-row>
+            <ion-row>
+                <ion-col>
+                    <button ion-button icon-only clear
+                        (click)="addRep()" [disabled]="isMaxReps">
+                        <ion-icon name="add"></ion-icon>
+                    </button>
+                </ion-col>
+            </ion-row>
         </ion-grid>
     </div>
     <div *ngSwitchDefault>

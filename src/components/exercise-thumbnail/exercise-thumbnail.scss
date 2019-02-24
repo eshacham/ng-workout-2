@@ -53,7 +53,7 @@ exercise-thumbnail {
         display: inline-block;
         position: relative;
     }
-    h4.clicker {
+    ion-col.clicker {
         cursor: pointer!important;
     }
     .fadeOutAndIn {
@@ -72,3 +72,4 @@ exercise-thumbnail {
         50% { opacity: 1; }
     }
 }
+

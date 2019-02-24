@@ -124,24 +124,23 @@
                 </ion-col>
             </ion-row>
             <ion-row *ngFor="let exerciseSet of exercise.sets">
-                <ion-col *ngFor="let rep of exerciseSet.reps; let i = index" class="rep"
-                        class="rep nonActiveRep" padding-vertical>
-                    <h4 *ngIf='rep.weight' text-center class="clicker"
-                        (click)="presentPopover1($event)">
+                <ion-col *ngFor="let rep of exerciseSet.reps; let i = index"
+                        class="rep nonActiveRep clicker" padding-vertical
+                        (click)="presentPopover($event, rep)">
+                    <h4 *ngIf='rep.weight' text-center>
                         {{rep.weight}}
                         <small>{{' ' + weightUnit[rep.weightUnit]}}</small>
                     </h4>
-                    <h4 *ngIf='rep.times' text-center class="clicker"
-                        (click)="presentPopover1($event)">
+                    <h4 *ngIf='rep.times' text-center >
                         {{rep.times}}
                         <small>{{' Times'}}</small>
                     </h4>
-                    <h4 *ngIf='rep.seconds'text-center class="clicker"
-                        (click)="presentPopover1($event)">
+                    <h4 *ngIf='rep.seconds' text-center >
                         {{rep.seconds}}<small>{{' Seconds'}}</small>
                     </h4>
-                    <h3 text-center *ngIf="isTimedRepRemaining(i)">{{timedRepRemaining}} Seconds
-                    </h3>
+                    <h4 *ngIf='!rep.weight && !rep.times && !rep.seconds' text-center>
+                        ...
+                    </h4>
                 </ion-col>
             </ion-row>
         </ion-grid>

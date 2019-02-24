@@ -25,8 +25,8 @@ export enum RepetitionSpeed {
     NA = 'N/A'
 }
 export enum WeightUnit {
-    Lbs,
-    Kg
+    Lbs = 'Lbs',
+    Kg = 'Kg'
 }
 
 export enum DisplayMode {

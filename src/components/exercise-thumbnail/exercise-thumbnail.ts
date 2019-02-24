@@ -12,13 +12,16 @@ import { ExerciseActionEvent } from '../../shared/model/ExerciseActionEvent';
     templateUrl: 'exercise-thumbnail-popover.html'
   })
   export class ExerciseThumbnailPopoverPage {
-    exercise: Exercise;
+    rep: Rep;
+    weightUnits: string[];
 
     constructor(private navParams: NavParams) {
     }
 
     ngOnInit() {
-      this.exercise = this.navParams.data.exercise;
+      this.rep = this.navParams.data.rep;
+
+      this.weightUnits = Object.keys(WeightUnit).map(key => WeightUnit[key])
     }
   }
 
@@ -97,6 +100,14 @@ export class ExerciseThumbnailComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.inWorkoutDayPublisher.subscribe(event => this.handleWorkoutEventchange(event));
+
+        this.exercise.sets.forEach(set => {
+            set.reps.forEach(rep => {
+                if (!rep.weightUnit) {
+                    rep.weightUnit = WeightUnit.Lbs;
+                }
+            })
+        })
       }
 
     handleWorkoutEventchange(event: ExerciseSwitchModeEvent) {
@@ -351,9 +362,9 @@ export class ExerciseThumbnailComponent implements OnInit, OnDestroy {
       return this.exercise.sets[0].reps.length === this.MINREPS;
   }
 
-  presentPopover1(event) {
+  presentPopover(event, rep: Rep) {
     let popover = this.popoverCtrl.create(ExerciseThumbnailPopoverPage, {
-        exercise: this.exercise
+        rep: rep
     });
 
     popover.present({

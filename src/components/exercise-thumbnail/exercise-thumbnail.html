@@ -105,17 +105,22 @@
             <ion-row>
                 <ion-col *ngFor="let exerciseSet of exercise.sets">
                     <ion-row justify-content-center align-items-center>
+                        <button ion-button icon-only clear *ngIf="isFirstSet(exerciseSet)"
+                            (click)="toggleOpen()">
+                            <ion-icon *ngIf="!IsOpen" name="arrow-dropdown"></ion-icon>
+                            <ion-icon *ngIf="IsOpen" name="arrow-dropup"></ion-icon>
+                        </button>
                         <ion-thumbnail >
-                            <img src={{exerciseSet.imageUrl}} />
+                            <img src={{exerciseSet.imageUrl}}/>
                         </ion-thumbnail>
-                        <button ion-button icon-only clear
+                        <button ion-button icon-only clear *ngIf="isLastSet(exerciseSet)"
                             (click)="deleteExercise()">
                             <ion-icon name="trash"></ion-icon>
                         </button>
                     </ion-row>
                 </ion-col>
             </ion-row>
-            <ion-row>
+            <ion-row *ngIf="IsOpen">
                 <ion-col *ngFor="let exerciseSet of exercise.sets" >
                     <exercise-variation text-wrap text-center
                     [exerciseSet]="exerciseSet"
@@ -123,60 +128,62 @@
                     </exercise-variation>
                 </ion-col>
             </ion-row>
-            <ion-row *ngFor="let exerciseSet of exercise.sets" justify-content-center>
-                <ion-col *ngFor="let rep of exerciseSet.reps; let i = index"
-                        class="rep nonActiveRep clicker" padding-vertical justify-content-center
-                        (click)="presentPopover($event, rep)">
-                    <h4 *ngIf='rep.weight' text-center>
-                        {{rep.weight}}
-                        <small>{{' ' + weightUnit[rep.weightUnit]}}</small>
-                    </h4>
-                    <h4 *ngIf='rep.times' text-center >
-                        {{rep.times}}
-                        <small>{{' Times'}}</small>
-                    </h4>
-                    <h4 *ngIf='rep.seconds' text-center >
-                        {{rep.seconds}}<small>{{' Seconds'}}</small>
-                    </h4>
-                    <h4 *ngIf='!rep.weight && !rep.times && !rep.seconds' text-center>
-                        ...
-                    </h4>
-                    <ion-row justify-content-center>
-                        <button ion-button icon-only clear
-                            (click)="deleteRep(i)" [disabled]="isMinReps">
-                            <ion-icon name="trash"></ion-icon>
+            <ion-list no-lines *ngIf="IsOpen">
+                <ion-row *ngFor="let exerciseSet of exercise.sets" justify-content-center>
+                    <ion-col *ngFor="let rep of exerciseSet.reps; let i = index"
+                            class="rep nonActiveRep clicker" padding-vertical justify-content-center
+                            (click)="presentPopover($event, rep)">
+                        <h4 *ngIf='rep.weight' text-center>
+                            {{rep.weight}}
+                            <small>{{' ' + weightUnit[rep.weightUnit]}}</small>
+                        </h4>
+                        <h4 *ngIf='rep.times' text-center >
+                            {{rep.times}}
+                            <small>{{' Times'}}</small>
+                        </h4>
+                        <h4 *ngIf='rep.seconds' text-center >
+                            {{rep.seconds}}<small>{{' Seconds'}}</small>
+                        </h4>
+                        <h4 *ngIf='!rep.weight && !rep.times && !rep.seconds' text-center>
+                            ...
+                        </h4>
+                        <ion-row justify-content-center>
+                            <button ion-button icon-only clear
+                                (click)="deleteRep(i)" [disabled]="isMinReps">
+                                <ion-icon name="trash"></ion-icon>
+                            </button>
+                            <button ion-button icon-only clear
+                                (click)="addRep(i)" [disabled]="isMaxReps">
+                            <ion-icon name="add-circle"></ion-icon>
                         </button>
-                        <button ion-button icon-only clear
-                            (click)="addRep(i)" [disabled]="isMaxReps">
-                        <ion-icon name="add-circle"></ion-icon>
-                    </button>
-                    </ion-row>
-                </ion-col>
-            </ion-row>
-            <ion-row justify-content-center>
-                <ion-col>
-                    <ion-list>
-                        <h3 text-center>
-                            Set Rest: {{exercise.sets[0].restBetweenReps}} seconds                        </h3>
-                        <ion-item>
-                            <ion-range [(ngModel)]="exercise.sets[0].restBetweenReps">
-                                <ion-icon range-left small name="repeat"></ion-icon>
-                                <ion-icon range-right name="repeat"></ion-icon>
-                            </ion-range>
-                        </ion-item>
-                        <h3 text-center>
-                            Exercise Rest: {{exercise.sets[0].restAfterExercise}} seconds                        </h3>
+                        </ion-row>
+                    </ion-col>
+                </ion-row>
+                <ion-row justify-content-center>
+                    <ion-col>
+                        <ion-list>
+                            <h3 text-center>
+                                Set Rest: {{exercise.sets[0].restBetweenReps}} seconds                        </h3>
                             <ion-item>
-                                <ion-range [(ngModel)]="exercise.sets[0].restAfterExercise">
-                                    <ion-icon range-left small name="body"></ion-icon>
-                                    <ion-icon range-right name="body"></ion-icon>
+                                <ion-range [(ngModel)]="exercise.sets[0].restBetweenReps">
+                                    <ion-icon range-left small name="repeat"></ion-icon>
+                                    <ion-icon range-right name="repeat"></ion-icon>
                                 </ion-range>
                             </ion-item>
-                    </ion-list>
+                            <h3 text-center>
+                                Exercise Rest: {{exercise.sets[0].restAfterExercise}} seconds                        </h3>
+                                <ion-item>
+                                    <ion-range [(ngModel)]="exercise.sets[0].restAfterExercise">
+                                        <ion-icon range-left small name="body"></ion-icon>
+                                        <ion-icon range-right name="body"></ion-icon>
+                                    </ion-range>
+                                </ion-item>
+                        </ion-list>
 
-                </ion-col>
+                    </ion-col>
 
-            </ion-row>
+                </ion-row>
+            </ion-list>
         </ion-grid>
     </div>
     <div *ngSwitchDefault>

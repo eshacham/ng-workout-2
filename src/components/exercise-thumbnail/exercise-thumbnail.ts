@@ -30,19 +30,20 @@ import { ExerciseActionEvent } from '../../shared/model/ExerciseActionEvent';
   templateUrl: 'exercise-thumbnail.html'
 })
 export class ExerciseThumbnailComponent implements OnInit, OnDestroy {
-  constructor (private popoverCtrl: PopoverController) {}
+    constructor (private popoverCtrl: PopoverController) {}
 
-  @Input() workoutDayName: string;
-  @Input('exercise') exercise: Exercise;
-  @Input() exerciseIndex: number;
-  @Input() inWorkoutDayPublisher: Subject<ExerciseSwitchModeEvent>;
+    @Input() workoutDayName: string;
+    @Input('exercise') exercise: Exercise;
+    @Input() exerciseIndex: number;
+    @Input() inWorkoutDayPublisher: Subject<ExerciseSwitchModeEvent>;
 
-  @Output() outEventEmitter = new EventEmitter<ExerciseActionEvent>();
+    @Output() outEventEmitter = new EventEmitter<ExerciseActionEvent>();
 
-  MAXREPS = 5;
-  MINREPS = 1;
+    MAXREPS = 5;
+    MINREPS = 1;
 
-  activeRepIndex = 0;
+    activeRepIndex = 0;
+
     get isPrevRepAvailable(): boolean {
         return this.activeRepIndex > 0 ||
         this.timedRepRemaining > 0 ||
@@ -61,6 +62,16 @@ export class ExerciseThumbnailComponent implements OnInit, OnDestroy {
 
     displayMode = DisplayMode;
     weightUnit = WeightUnit;
+
+    private _isOpen = false;
+    get IsOpen(): boolean { return this._isOpen; }
+    set IsOpen (val: boolean) {
+        this._isOpen = val;
+    }
+
+    toggleOpen(){
+        this.IsOpen = !this.IsOpen
+    }
 
     private _isRunning = false;
     get IsRunning(): boolean { return this._isRunning; }
@@ -339,13 +350,10 @@ export class ExerciseThumbnailComponent implements OnInit, OnDestroy {
       if (!this.isMaxReps) {
           this.exercise.sets.forEach(set => {
               const newRep: Rep = new Rep();
-              //const last = set.reps.length-1;
-              //f (last >= 0) {
               newRep.weight = set.reps[index].weight;
               newRep.weightUnit = set.reps[index].weightUnit,
               newRep.times = set.reps[index].times,
               newRep.seconds = set.reps[index].seconds;
-            //}
               set.reps.splice(index,0, newRep );
           });
       }

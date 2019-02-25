@@ -123,3 +123,12 @@ ion-app.md [padding-vertical]{
 .range-ios .range-bar-active {
     background: color($colors, secondary);
 }
+.range-md .range-knob {
+    background: color($colors, secondary);
+}
+.range-md .range-bar {
+    background: color($colors, danger);
+}
+.range-md .range-bar-active {
+    background: color($colors, secondary);
+}

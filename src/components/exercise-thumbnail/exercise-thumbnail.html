@@ -128,11 +128,12 @@
                     </exercise-variation>
                 </ion-col>
             </ion-row>
-            <ion-list no-lines *ngIf="IsOpen">
+            <ion-list no-lines *ngIf="IsOpen" class="noBottomMargin">
                 <ion-row *ngFor="let exerciseSet of exercise.sets" justify-content-center>
                     <ion-col *ngFor="let rep of exerciseSet.reps; let i = index"
-                            class="rep nonActiveRep clicker" padding-vertical justify-content-center
-                            (click)="presentPopover($event, rep)">
+                            padding-vertical justify-content-center >
+                        <ion-item class="rep nonActiveRep clicker"
+                            (click)="presentPopover($event, rep)" >
                         <h4 *ngIf='rep.weight' text-center>
                             {{rep.weight}}
                             <small>{{' ' + weightUnit[rep.weightUnit]}}</small>
@@ -147,6 +148,7 @@
                         <h4 *ngIf='!rep.weight && !rep.times && !rep.seconds' text-center>
                             ...
                         </h4>
+                        </ion-item>
                         <ion-row justify-content-center>
                             <button ion-button icon-only clear
                                 (click)="deleteRep(i)" [disabled]="isMinReps">
@@ -161,7 +163,7 @@
                 </ion-row>
                 <ion-row justify-content-center>
                     <ion-col>
-                        <ion-list>
+                        <ion-list no-lines class="noBottomMargin">
                             <h3 text-center>
                                 Set Rest: {{exercise.sets[0].restBetweenReps}} seconds                        </h3>
                             <ion-item>

@@ -73,6 +73,10 @@ export class ExerciseThumbnailComponent implements OnInit, OnDestroy {
         this.IsOpen = !this.IsOpen
     }
 
+    switchExerciseSets() {
+        
+    }
+
     private _isRunning = false;
     get IsRunning(): boolean { return this._isRunning; }
     set IsRunning (val: boolean) {

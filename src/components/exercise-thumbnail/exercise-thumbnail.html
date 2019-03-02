@@ -100,27 +100,31 @@
                             placeholder="Exercise Name">
                         </ion-input>
                     </ion-item>
-                </ion-col>
-            </ion-row>
-            <ion-row>
-                <ion-col *ngFor="let exerciseSet of exercise.sets" no-padding>
-                    <ion-item justify-content-center align-items-center>
-                        <ion-thumbnail >
-                            <img src={{exerciseSet.imageUrl}}/>
-                            <button ion-button icon-only clear
-                                (click)="deleteExercise()">
-                                <ion-icon name="trash"></ion-icon>
+
+                    <ion-item >
+                        <ion-row align-items-center justify-content-center>
+                            <ion-thumbnail >
+                                <div>
+                                    <img src={{exerciseSet.imageUrl}}/>
+                                    <button ion-button icon-only clear
+                                        (click)="deleteExercise()">
+                                        <ion-icon name="trash"></ion-icon>
+                                    </button>
+                                </div>
+                            </ion-thumbnail>
+                            <button *ngIf="isNotLastInSet(exerciseSet)" ion-button icon-only clear
+                                (click)="switchExerciseSets()">
+                                <ion-icon name="repeat"></ion-icon>
                             </button>
-                        </ion-thumbnail>
+                        </ion-row>
                     </ion-item>
-                </ion-col>
-            </ion-row>
-            <ion-row >
-                <ion-col *ngFor="let exerciseSet of exercise.sets">
-                    <exercise-variation text-wrap text-center
-                    [exerciseSet]="exerciseSet"
-                    [inEditMode]="true">
-                    </exercise-variation>
+
+                    <ion-item>
+                        <exercise-variation text-wrap text-center
+                            [exerciseSet]="exerciseSet"
+                            [inEditMode]="true">
+                        </exercise-variation>
+                    </ion-item>
                 </ion-col>
             </ion-row>
             <ion-row>
@@ -131,12 +135,7 @@
                         <ion-icon *ngIf="IsOpen" name="arrow-dropup"></ion-icon>
                     </button>
                 </ion-col>
-                <ion-col *ngIf="hasSet" no-padding>
-                    <button ion-button icon-only clear
-                        (click)="switchExerciseSets()">
-                        <ion-icon name="repeat"></ion-icon>
-                    </button>
-                </ion-col>
+
             </ion-row>
             <ion-list no-lines *ngIf="IsOpen" class="noBottomMargin">
                 <ion-row *ngFor="let exerciseSet of exercise.sets" justify-content-center>

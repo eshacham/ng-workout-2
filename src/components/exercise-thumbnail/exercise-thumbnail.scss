@@ -1,14 +1,18 @@
 exercise-thumbnail {
     ion-thumbnail {
-        img {
-            height: 80px!important;
-            width: 80px!important;
+       div {
+           display: inline-block;
+           position: relative;
+           img {
+                height: 80px!important;
+                width: 80px!important;
+            }
+            button {
+                position: absolute!important;
+                left: calc(50% + 5px);
+                top: calc(50% - 1px);
+            }
         };
-        button {
-            position: absolute!important;
-            left: calc(50% + 5px);
-            top: calc(50% - 1px);
-        }
         margin: 2px 1px 2px 1px!important;
         display: flex;
         justify-content: center;
@@ -80,6 +84,7 @@ exercise-thumbnail {
     ion-input {
         input {
             text-align: center;
+            margin: 4px!important;
         }
     }
 }

@@ -74,7 +74,7 @@ export class ExerciseThumbnailComponent implements OnInit, OnDestroy {
     }
 
     switchExerciseSets() {
-        
+
     }
 
     private _isRunning = false;
@@ -195,6 +195,10 @@ export class ExerciseThumbnailComponent implements OnInit, OnDestroy {
 
     isLastInSet(exerciseSet: ExerciseSet): boolean {
         return this.hasSet && this.exercise.sets[this.exercise.sets.length-1] === exerciseSet;
+    }
+
+    isNotLastInSet(exerciseSet: ExerciseSet): boolean {
+        return this.hasSet && this.exercise.sets[this.exercise.sets.length-1] !== exerciseSet;
     }
 
     isFirstSet(exerciseSet: ExerciseSet): boolean {

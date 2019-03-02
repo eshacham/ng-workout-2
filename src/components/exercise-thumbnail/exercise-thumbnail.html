@@ -93,9 +93,9 @@
     </div>
     <div *ngSwitchCase="displayMode.Edit">
         <ion-grid>
-            <ion-row>
+            <ion-row >
                 <ion-col *ngFor="let exerciseSet of exercise.sets" no-padding>
-                    <ion-item>
+                    <ion-item >
                         <ion-input type="text" [(ngModel)]="exerciseSet.name"
                             placeholder="Exercise Name">
                         </ion-input>
@@ -104,15 +104,15 @@
             </ion-row>
             <ion-row>
                 <ion-col *ngFor="let exerciseSet of exercise.sets" no-padding>
-                    <ion-row justify-content-center align-items-center>
+                    <ion-item justify-content-center align-items-center>
                         <ion-thumbnail >
                             <img src={{exerciseSet.imageUrl}}/>
+                            <button ion-button icon-only clear
+                                (click)="deleteExercise()">
+                                <ion-icon name="trash"></ion-icon>
+                            </button>
                         </ion-thumbnail>
-                        <button ion-button icon-only clear
-                            (click)="deleteExercise()">
-                            <ion-icon name="trash"></ion-icon>
-                        </button>
-                    </ion-row>
+                    </ion-item>
                 </ion-col>
             </ion-row>
             <ion-row >

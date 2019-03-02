@@ -4,6 +4,11 @@ exercise-thumbnail {
             height: 80px!important;
             width: 80px!important;
         };
+        button {
+            position: absolute!important;
+            left: calc(50% + 5px);
+            top: calc(50% - 1px);
+        }
         margin: 2px 1px 2px 1px!important;
         display: flex;
         justify-content: center;
@@ -71,5 +76,10 @@ exercise-thumbnail {
     }
     h3 {
         color: color($colors, danger);
+    }
+    ion-input {
+        input {
+            text-align: center;
+        }
     }
 }

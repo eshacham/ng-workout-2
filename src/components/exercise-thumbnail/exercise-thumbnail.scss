@@ -1,12 +1,12 @@
 exercise-thumbnail {
     ion-thumbnail {
-       div {
-           display: inline-block;
-           position: relative;
-           img {
-                height: 80px!important;
-                width: 80px!important;
-            }
+        img {
+            height: 80px!important;
+            width: 80px!important;
+        }
+        div {
+            display: inline-block;
+            position: relative;
             button[bottom] {
                 position: absolute!important;
                 left: calc(50% + 5px);
@@ -22,7 +22,7 @@ exercise-thumbnail {
         display: flex;
         justify-content: center;
     };
-    
+
     #exercise-set-list {
         margin-bottom: 0px;
     };

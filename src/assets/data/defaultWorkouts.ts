@@ -384,6 +384,37 @@ export const json = { workouts: [{
                                 ],
                                 'restBetweenReps': 20,
                                 'restAfterExercise': 20
+                            },
+                            {
+                                'id': 3,
+                                'name': 'Dumbbell Bench Press, Rotating Grip',
+                                'imageUrl': 'assets/images/DumbbellBenshPressRotatingGrip.png',
+                                grip: {
+                                    type: GripType.Neutral,
+                                    width: GripWidth.Normal,
+                                },
+                                'repetition': RepetitionSpeed.OneOne,
+                                weightType: WeightType.Dumbbell,
+                                'isFavorite': false,
+                                'reps': [
+                                    {
+                                        'weight': 90,
+                                        'weightUnit': WeightUnit.Lbs,
+                                        'times': 10
+                                    },
+                                    {
+                                        'weight': 90,
+                                        'weightUnit': WeightUnit.Lbs,
+                                        'times': 10
+                                    },
+                                    {
+                                        'weight': 90,
+                                        'weightUnit': WeightUnit.Lbs,
+                                        'times': 10
+                                    },
+                                ],
+                                'restBetweenReps': 20,
+                                'restAfterExercise': 20
                             }
                         ]
                     },

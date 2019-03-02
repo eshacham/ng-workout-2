@@ -68,7 +68,7 @@ exercise-thumbnail {
         display: inline-block;
         position: relative;
     }
-    ion-col.clicker {
+    .clicker {
         cursor: pointer!important;
     }
     .fadeOutAndIn {
@@ -91,6 +91,12 @@ exercise-thumbnail {
         input {
             text-align: center;
             margin: 4px!important;
+        }
+    }
+    button {
+        ion-icon[narrow-padding] {
+            padding-left: 2px;
+            padding-right: 2px;
         }
     }
 }

@@ -12,7 +12,7 @@
                                 </ion-thumbnail>
                             </ion-col>
                             <ion-col>
-                                <h2 text-wrap text-start>{{exerciseSet.name}} margin-bottom</h2>
+                                <h2 text-wrap text-start margin-bottom>{{exerciseSet.name}} </h2>
                                 <exercise-variation text-wrap
                                     #variationComponent [exerciseSet]="exerciseSet" >
                                 </exercise-variation>
@@ -138,36 +138,40 @@
             <ion-list no-lines *ngIf="IsOpen" class="noBottomMargin">
                 <ion-row *ngFor="let exerciseSet of exercise.sets" justify-content-center>
                     <ion-col *ngFor="let rep of exerciseSet.reps; let i = index"
-                            padding-vertical justify-content-center >
-                        <ion-item class="rep nonActiveRep clicker"
-                            (click)="presentPopover($event, rep)" >
-                        <h4 *ngIf='rep.weight' text-center>
-                            {{rep.weight}}
-                            <small>{{' ' + weightUnit[rep.weightUnit]}}</small>
-                        </h4>
-                        <h4 *ngIf='rep.times' text-center >
-                            {{rep.times}}
-                            <small>{{' Times'}}</small>
-                        </h4>
-                        <h4 *ngIf='rep.seconds' text-center >
-                            {{rep.seconds}}<small>{{' Seconds'}}</small>
-                        </h4>
-                        <h4 *ngIf='!rep.weight && !rep.times && !rep.seconds' text-center>
-                            ...
-                        </h4>
-                        </ion-item>
-                        <ion-row justify-content-center *ngIf="isLastSet(exerciseSet)">
-                            <button ion-button icon-only clear
+                        no-padding >
+                        <ion-item class="rep nonActiveRep ">
+                            <div class="clicker"
+                                (click)="presentPopover($event, rep)">
+                                <h5 *ngIf='rep.weight' text-center>
+                                    {{rep.weight}}
+                                    <small>{{' ' + weightUnit[rep.weightUnit]}}</small>
+                                </h5>
+                                <h5 *ngIf='rep.times' text-center >
+                                    {{rep.times}}
+                                    <small>{{' Times'}}</small>
+                                </h5>
+                                <h5 *ngIf='rep.seconds' text-center >
+                                    {{rep.seconds}}<small>{{' Seconds'}}</small>
+                                </h5>
+                                <h5 *ngIf='!rep.weight && !rep.times && !rep.seconds' text-center>
+                                    ...
+                                </h5>
+                            </div>
+                            <ion-row justify-content-center *ngIf="isLastSet(exerciseSet)">
+                                <button ion-button icon-only clear
                                 (click)="deleteRep(i)" [disabled]="isMinReps">
-                                <ion-icon name="trash"></ion-icon>
+                                <ion-icon name="trash" narrow-padding></ion-icon>
                             </button>
                             <button ion-button icon-only clear
                                 (click)="addRep(i)" [disabled]="isMaxReps">
-                                <ion-icon name="add-circle"></ion-icon>
+                                <ion-icon name="add-circle" narrow-padding></ion-icon>
                             </button>
-                        </ion-row>
+                            </ion-row>
+
+                        </ion-item>
                     </ion-col>
                 </ion-row>
+
                 <ion-row justify-content-center>
                     <ion-col>
                         <ion-list no-lines class="noBottomMargin">

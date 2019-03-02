@@ -157,15 +157,16 @@
                                     ...
                                 </h5>
                             </div>
-                            <ion-row justify-content-center *ngIf="isLastSet(exerciseSet)">
+                            <ion-row justify-content-center class="bordered"
+                                *ngIf="isLastSet(exerciseSet)" >
                                 <button ion-button icon-only clear
                                 (click)="deleteRep(i)" [disabled]="isMinReps">
                                 <ion-icon name="trash" narrow-padding></ion-icon>
-                            </button>
-                            <button ion-button icon-only clear
-                                (click)="addRep(i)" [disabled]="isMaxReps">
-                                <ion-icon name="add-circle" narrow-padding></ion-icon>
-                            </button>
+                                </button>
+                                <button ion-button icon-only clear
+                                    (click)="addRep(i)" [disabled]="isMaxReps">
+                                    <ion-icon name="add-circle" narrow-padding></ion-icon>
+                                </button>
                             </ion-row>
 
                         </ion-item>

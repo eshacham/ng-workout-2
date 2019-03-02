@@ -3,6 +3,7 @@ exercise-thumbnail {
         img {
             height: 80px!important;
             width: 80px!important;
+
         }
         div {
             display: inline-block;
@@ -98,5 +99,8 @@ exercise-thumbnail {
             padding-left: 2px;
             padding-right: 2px;
         }
+    }
+    .bordered {
+        background: color($colors, danger);
     }
 }

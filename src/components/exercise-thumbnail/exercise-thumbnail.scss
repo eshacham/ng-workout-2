@@ -7,16 +7,22 @@ exercise-thumbnail {
                 height: 80px!important;
                 width: 80px!important;
             }
-            button {
+            button[bottom] {
                 position: absolute!important;
                 left: calc(50% + 5px);
                 top: calc(50% - 1px);
+            }
+            button[up] {
+                position: absolute!important;
+                left: calc(50% - 2px);
+                top: calc(50% - 53px);
             }
         };
         margin: 2px 1px 2px 1px!important;
         display: flex;
         justify-content: center;
     };
+    
     #exercise-set-list {
         margin-bottom: 0px;
     };

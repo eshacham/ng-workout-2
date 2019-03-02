@@ -94,7 +94,7 @@
     <div *ngSwitchCase="displayMode.Edit">
         <ion-grid>
             <ion-row >
-                <ion-col *ngFor="let exerciseSet of exercise.sets" no-padding>
+                <ion-col *ngFor="let exerciseSet of exercise.sets; let i = index" no-padding>
                     <ion-item >
                         <ion-input type="text" [(ngModel)]="exerciseSet.name"
                             placeholder="Exercise Name">
@@ -106,19 +106,20 @@
                             <ion-thumbnail >
                                 <div>
                                     <img src={{exerciseSet.imageUrl}}/>
-                                    <button ion-button icon-only clear
-                                        (click)="deleteExercise()">
+                                    <button ion-button icon-only clear bottom
+                                        (click)="deleteExerciseSet(i)">
                                         <ion-icon name="trash"></ion-icon>
+                                    </button>
+                                    <button *ngIf="isNotLastInSet(exerciseSet)"
+                                        ion-button icon-only clear up
+                                        (click)="switchExerciseSets(i)">
+                                        <ion-icon name="repeat"></ion-icon>
                                     </button>
                                 </div>
                             </ion-thumbnail>
-                            <button *ngIf="isNotLastInSet(exerciseSet)" ion-button icon-only clear
-                                (click)="switchExerciseSets()">
-                                <ion-icon name="repeat"></ion-icon>
-                            </button>
+
                         </ion-row>
                     </ion-item>
-
                     <ion-item>
                         <exercise-variation text-wrap text-center
                             [exerciseSet]="exerciseSet"
@@ -127,16 +128,14 @@
                     </ion-item>
                 </ion-col>
             </ion-row>
-            <ion-row>
-                <ion-col no-padding>
-                    <button ion-button icon-only clear
-                        (click)="toggleOpen()">
-                        <ion-icon *ngIf="!IsOpen" name="arrow-dropdown"></ion-icon>
-                        <ion-icon *ngIf="IsOpen" name="arrow-dropup"></ion-icon>
-                    </button>
-                </ion-col>
-
+            <ion-row justify-content-center>
+                <button ion-button icon-only clear
+                    (click)="toggleOpen()">
+                    <ion-icon *ngIf="!IsOpen" name="arrow-dropdown"></ion-icon>
+                    <ion-icon *ngIf="IsOpen" name="arrow-dropup"></ion-icon>
+                </button>
             </ion-row>
+
             <ion-list no-lines *ngIf="IsOpen" class="noBottomMargin">
                 <ion-row *ngFor="let exerciseSet of exercise.sets" justify-content-center>
                     <ion-col *ngFor="let rep of exerciseSet.reps; let i = index"

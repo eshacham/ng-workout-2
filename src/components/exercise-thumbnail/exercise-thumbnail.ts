@@ -73,10 +73,6 @@ export class ExerciseThumbnailComponent implements OnInit, OnDestroy {
         this.IsOpen = !this.IsOpen
     }
 
-    switchExerciseSets() {
-
-    }
-
     private _isRunning = false;
     get IsRunning(): boolean { return this._isRunning; }
     set IsRunning (val: boolean) {
@@ -152,6 +148,19 @@ export class ExerciseThumbnailComponent implements OnInit, OnDestroy {
         this.emitExerciseActionEvent(ExerciseAction.Delete);
     }
 
+    switchExerciseSets(index:number) {
+        let exerciseSet = this.exercise.sets[index];
+        this.exercise.sets.splice(index, 1)
+        this.exercise.sets.splice(index + 1, 0, exerciseSet);
+    }
+
+    deleteExerciseSet(index: number) {
+        this.exercise.sets.splice(index, 1)
+        if (!this.exercise.sets.length) {
+            this.deleteExercise();
+        }
+    }
+
     completeExercise () {
         this.emitExerciseActionEvent(ExerciseAction.Completed);
     }
@@ -217,173 +226,173 @@ export class ExerciseThumbnailComponent implements OnInit, OnDestroy {
         }
     }
 
-  getRunningExerciseSetCellClass() {
-      let returnClass = 'col-sm-';
-      const size = this.getCellSizeFromExerciseSet();
-      returnClass += size.toString();
-      return [returnClass];
-  }
+    getRunningExerciseSetCellClass() {
+        let returnClass = 'col-sm-';
+        const size = this.getCellSizeFromExerciseSet();
+        returnClass += size.toString();
+        return [returnClass];
+    }
 
-  getRunningExerciseSetRepCellClass(repIndex: number) {
-      const classes = this.getExerciseSetRepCellClass();
-      if (this.activeRepIndex === repIndex) {
-          classes.push('activeRep', 'fadeOutAndIn');
-      } else {
-          classes.push('nonActiveRep');
-      }
-      return classes;
-  }
+    getRunningExerciseSetRepCellClass(repIndex: number) {
+        const classes = this.getExerciseSetRepCellClass();
+        if (this.activeRepIndex === repIndex) {
+            classes.push('activeRep', 'fadeOutAndIn');
+        } else {
+            classes.push('nonActiveRep');
+        }
+        return classes;
+    }
 
-  private getExerciseSetRepCellClass() {
-      const classes = [];
-      let returnClass = 'col-sm-';
-      const size = 12 / this.exercise.sets[0].reps.length;
-      returnClass += size.toString();
-      classes.push(returnClass);
-      return classes;
-  }
+    private getExerciseSetRepCellClass() {
+        const classes = [];
+        let returnClass = 'col-sm-';
+        const size = 12 / this.exercise.sets[0].reps.length;
+        returnClass += size.toString();
+        classes.push(returnClass);
+        return classes;
+    }
 
-  getFrozenExerciseSetRepCellClass() {
-      const classes = this.getExerciseSetRepCellClass();
-      classes.push('nonActiveRep');
-      return classes;
-  }
+    getFrozenExerciseSetRepCellClass() {
+        const classes = this.getExerciseSetRepCellClass();
+        classes.push('nonActiveRep');
+        return classes;
+    }
 
-  getCellSizeFromExerciseSet() {
-    return (12 / this.exercise.sets.length);
-}
+    getCellSizeFromExerciseSet() {
+        return (12 / this.exercise.sets.length);
+    }
 
-  startWorkout() {
-      this.IsFrozen = false;
-      this.resetCompletedReps();
-      this.startTimedRep();
-  }
+    startWorkout() {
+        this.IsFrozen = false;
+        this.resetCompletedReps();
+        this.startTimedRep();
+    }
 
-  private resetCompletedReps() {
-      this.completedReps.length = 0;
-      this.activeRepIndex = 0;
-  }
+    private resetCompletedReps() {
+        this.completedReps.length = 0;
+        this.activeRepIndex = 0;
+    }
 
-  private startTimedRep() {
-      //this.audioService.playStartWorkout();
-      this.stopRepTimer();
-      this._timedRepRemaining = this.exercise.sets[0].reps[this.activeRepIndex].seconds;
-      if (this._timedRepRemaining) {
-          this.timedRepTimer = setInterval(() => {
-              this._timedRepRemaining --;
-              if (this._timedRepRemaining <= 0) {
-                  this.stopRepTimer();
-                  this.nextRep(true);
-              }
-          }, 1000);
-      }
-  }
+    private startTimedRep() {
+        //this.audioService.playStartWorkout();
+        this.stopRepTimer();
+        this._timedRepRemaining = this.exercise.sets[0].reps[this.activeRepIndex].seconds;
+        if (this._timedRepRemaining) {
+            this.timedRepTimer = setInterval(() => {
+                this._timedRepRemaining --;
+                if (this._timedRepRemaining <= 0) {
+                    this.stopRepTimer();
+                    this.nextRep(true);
+                }
+            }, 1000);
+        }
+    }
 
-  private stopRepTimer() {
-      if (this.timedRepTimer) {
-          clearInterval(this.timedRepTimer);
-      }
-  }
+    private stopRepTimer() {
+        if (this.timedRepTimer) {
+            clearInterval(this.timedRepTimer);
+        }
+    }
 
-  private startTimedRest(callbackAction) {
-      //this.audioService.playStartWorkout();
-      this.stopRestTimer();
-      this._timedRestRemaining = this._timedToRestAfterCurrentRep;
-      if (this._timedRestRemaining) {
-          this.timedRestTimer = setInterval(() => {
-              this._timedRestRemaining --;
-              if (this._timedRestRemaining <= 0) {
-                  this.stopRestTimer();
-                  callbackAction();
-              }
-          }, 1000);
-      }
-  }
+    private startTimedRest(callbackAction) {
+        //this.audioService.playStartWorkout();
+        this.stopRestTimer();
+        this._timedRestRemaining = this._timedToRestAfterCurrentRep;
+        if (this._timedRestRemaining) {
+            this.timedRestTimer = setInterval(() => {
+                this._timedRestRemaining --;
+                if (this._timedRestRemaining <= 0) {
+                    this.stopRestTimer();
+                    callbackAction();
+                }
+            }, 1000);
+        }
+    }
 
-  private stopRestTimer() {
-      if (this.timedRestTimer) {
-          clearInterval(this.timedRestTimer);
-      }
-  }
+    private stopRestTimer() {
+        if (this.timedRestTimer) {
+            clearInterval(this.timedRestTimer);
+        }
+    }
 
-  prevRep () {
-      if (this.activeRepIndex > 0) {
-          this.completedReps.pop();
-          this.activeRepIndex--;
-      }
-      this.stopRepTimer();
-      this.stopRestTimer();
-      this.startTimedRep();
-  }
+    prevRep () {
+        if (this.activeRepIndex > 0) {
+            this.completedReps.pop();
+            this.activeRepIndex--;
+        }
+        this.stopRepTimer();
+        this.stopRestTimer();
+        this.startTimedRep();
+    }
 
-  skipRest() {
-      this._timedRestRemaining = 0;
-  }
+    skipRest() {
+        this._timedRestRemaining = 0;
+    }
 
-  private activateNextRep() {
-      this.activeRepIndex++;
-      this.startTimedRep();
-  }
+    private activateNextRep() {
+        this.activeRepIndex++;
+        this.startTimedRep();
+    }
 
-  nextRep (shouldRest: boolean) {
-      if (!this.isRepCompleted (this.activeRepIndex)) {
-          this.completedReps.push(this.activeRepIndex);
-      }
-      this.stopRepTimer();
-      this._timedRepRemaining = 0;
-      if (this.exercise.sets[0].reps.length - 1 > this.activeRepIndex) {
-          if (shouldRest) {
-              this._timedToRestAfterCurrentRep = this.exercise.sets[0].restBetweenReps;
-              this.startTimedRest(() => this.activateNextRep());
-          } else {
-              this.skipRest();
-              this.activateNextRep();
-          }
-      } else {
-          this.stopRepTimer();
-          if (shouldRest) {
-              this._timedToRestAfterCurrentRep = this.exercise.sets[0].restAfterExercise;
-              this.startTimedRest(() => this.completeExercise());
-          } else {
-              this.completeExercise();
-          }
-      }
-  }
+    nextRep (shouldRest: boolean) {
+        if (!this.isRepCompleted (this.activeRepIndex)) {
+            this.completedReps.push(this.activeRepIndex);
+        }
+        this.stopRepTimer();
+        this._timedRepRemaining = 0;
+        if (this.exercise.sets[0].reps.length - 1 > this.activeRepIndex) {
+            if (shouldRest) {
+                this._timedToRestAfterCurrentRep = this.exercise.sets[0].restBetweenReps;
+                this.startTimedRest(() => this.activateNextRep());
+            } else {
+                this.skipRest();
+                this.activateNextRep();
+            }
+        } else {
+            this.stopRepTimer();
+            if (shouldRest) {
+                this._timedToRestAfterCurrentRep = this.exercise.sets[0].restAfterExercise;
+                this.startTimedRest(() => this.completeExercise());
+            } else {
+                this.completeExercise();
+            }
+        }
+    }
 
-  isRepCompleted (index) {
-      return this.completedReps.includes(index);
-  }
+    isRepCompleted (index) {
+        return this.completedReps.includes(index);
+    }
 
-  addRep(index: number) {
-      if (!this.isMaxReps) {
-          this.exercise.sets.forEach(set => {
-              const newRep: Rep = new Rep();
-              newRep.weight = set.reps[index].weight;
-              newRep.weightUnit = set.reps[index].weightUnit,
-              newRep.times = set.reps[index].times,
-              newRep.seconds = set.reps[index].seconds;
-              set.reps.splice(index,0, newRep );
-          });
-      }
-  }
+    addRep(index: number) {
+        if (!this.isMaxReps) {
+            this.exercise.sets.forEach(set => {
+                const newRep: Rep = new Rep();
+                newRep.weight = set.reps[index].weight;
+                newRep.weightUnit = set.reps[index].weightUnit,
+                newRep.times = set.reps[index].times,
+                newRep.seconds = set.reps[index].seconds;
+                set.reps.splice(index,0, newRep );
+            });
+        }
+    }
 
-  deleteRep(index: number) {
-      if (!this.isMinReps) {
-          this.exercise.sets.forEach(set => {
-              set.reps.splice(index, 1);
-          })
-      }
-  }
+    deleteRep(index: number) {
+        if (!this.isMinReps) {
+            this.exercise.sets.forEach(set => {
+                set.reps.splice(index, 1);
+            })
+        }
+    }
 
-  get isMaxReps(): boolean {
-      return this.exercise.sets[0].reps.length === this.MAXREPS;
-  }
+    get isMaxReps(): boolean {
+        return this.exercise.sets[0].reps.length === this.MAXREPS;
+    }
 
-  get isMinReps(): boolean {
-      return this.exercise.sets[0].reps.length === this.MINREPS;
-  }
+    get isMinReps(): boolean {
+        return this.exercise.sets[0].reps.length === this.MINREPS;
+    }
 
-  presentPopover(event, rep: Rep) {
+    presentPopover(event, rep: Rep) {
     let popover = this.popoverCtrl.create(ExerciseThumbnailPopoverPage, {
         rep: rep
     });

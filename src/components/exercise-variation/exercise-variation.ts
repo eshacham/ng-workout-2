@@ -3,6 +3,7 @@ import { PopoverController, NavParams } from 'ionic-angular';
 import { ExerciseSet } from '../../shared/model/ExerciseSet';
 import { GripType, GripWidth, WeightType, RepetitionSpeed } from '../../shared/enums';
 import { Grip } from '../../shared/model/Grip';
+import { stringify } from '@angular/compiler/src/util';
 
 @Component({
   templateUrl: 'exercise-variation-popover.html'
@@ -57,21 +58,45 @@ export class ExerciseVariationComponent {
     this.exerciseSet.repSpeed = RepetitionSpeed[this.exerciseSet.repSpeed] || RepetitionSpeed.NA;
   }
 
+  getWeightVariation = (): string => {
+    if (this.exerciseSet.typeOfWeight !== WeightType.NoWeight) {
+      return `${this.exerciseSet.typeOfWeight}`;
+    }
+  }
+  getSpeedVariation = (): string => {
+    if (this.exerciseSet.repSpeed !== RepetitionSpeed.NA) {
+      return `${this.exerciseSet.repSpeed}`;
+    }
+  }
+  getGripVariation = (): string => {
+    let rc = '';
+    let hasWidth = false;
+    if (this.exerciseSet.theGrip.width !== GripWidth.NoGrip) {
+      rc = `Grip: ${this.exerciseSet.theGrip.width}`;
+      hasWidth = true;
+    }
+    if (this.exerciseSet.theGrip.typeOfGrip !== GripType.NoGrip) {
+      if (!hasWidth) {
+        rc += `Grip: ${this.exerciseSet.theGrip.typeOfGrip}`;
+      } else {
+        rc += `, ${this.exerciseSet.theGrip.typeOfGrip}`;
+      }
+    }
+
+    return rc;
+  }
+
   get exerciseDetails(): string {
     const details = [];
+    let rc: string;
 
-    if (this.exerciseSet.theGrip.typeOfGrip !== GripType.NoGrip) {
-        details.push(this.exerciseSet.theGrip.typeOfGrip);
-    }
-    if (this.exerciseSet.theGrip.width !== GripWidth.NoGrip) {
-        details.push(this.exerciseSet.theGrip.width);
-    }
-    if (this.exerciseSet.typeOfWeight !== WeightType.NoWeight) {
-        details.push(this.exerciseSet.typeOfWeight);
-    }
-    if (this.exerciseSet.repSpeed !== RepetitionSpeed.NA) {
-        details.push(this.exerciseSet.repSpeed);
-    }
+    rc = this.getWeightVariation()
+    if (rc) details.push(rc);
+    rc = this.getGripVariation()
+    if (rc) details.push(rc);
+    rc = this.getSpeedVariation()
+    if (rc) details.push(rc);
+
     return details.length ? details.join(' | ') : '...';
   }
 

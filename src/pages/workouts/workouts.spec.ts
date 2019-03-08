@@ -83,17 +83,17 @@ describe('Page: WorkoutsPage', () => {
         expect(comp.storage.set).toHaveBeenCalledWith('workouts', defaultWorkouts.workouts)
     });
 
-    it('should set the workouts props to the default 3 workouts', async () => {
+    it('should set the workouts props to the default 4 workouts', async () => {
         await comp.ngOnInit();
         expect(comp.workouts).toBeTruthy()
-        expect(comp.workouts.length).toBe(3)
+        expect(comp.workouts.length).toBe(4)
     });
 
-    it('should have a list of 3 workouts', async () => {
+    it('should have a list of 4 workouts', async () => {
         await comp.ngOnInit();
         fixture.detectChanges()
         let items = fixture.debugElement.queryAll(By.css('#workout-card'));
-        expect(items.length).toBe(3);
+        expect(items.length).toBe(4);
     });
 
 });

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, LoadingController, ActionSheetController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { File } from '@ionic-native/file';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'page-library',
@@ -15,7 +16,8 @@ export class LibraryPage {
     private loadingCtrl: LoadingController,
     private actionSheetCtrl: ActionSheetController,
     private file: File,
-    private camera: Camera) {
+    private camera: Camera,
+    private sanitizer: DomSanitizer) {
   }
 
   presentActionSheet() {
@@ -43,7 +45,7 @@ export class LibraryPage {
     actionSheet.present();
   }
 
-  takePicture(sourceType) {
+  async takePicture(sourceType) {
     // Create options for the Camera Dialog
     const options: CameraOptions = {
       quality: 100,
@@ -53,37 +55,35 @@ export class LibraryPage {
       mediaType: this.camera.MediaType.PICTURE,
       sourceType: sourceType
     }
-
     // Get the picture
-    this.camera.getPicture(options).then((imageData) => {
-
-      let loading = this.loadingCtrl.create();
-      loading.present();
-
-      const tempfileName = 'data:image/jpeg;base64,' + imageData;
-      console.log(tempfileName);
-
+    try {
+      const imageData = await this.camera.getPicture(options)
+      //let loading = this.loadingCtrl.create();
+      //loading.present();
+      const unsafefileName = 'data:image/jpeg;base64,' + imageData;
+      console.log('sunsafefileName:', unsafefileName);
       // Resolve the picture URI to a file
-      this.file.resolveLocalFilesystemUrl(imageData).then(oneFile => {
-
-        // Convert the File to an ArrayBuffer for upload
-        this.file.readAsArrayBuffer(this.file.tempDirectory, oneFile.name).then(realFile => {
-          let type = 'jpg';
-          let newName = 'image-' + new Date().getTime() + '.' + type;
-          this.images.push({
-            key: newName,
-            url: `${this.file.tempDirectory}/${oneFile.name}`,
-            tmepPath: tempfileName
-          });
-          loading.dismiss();
-        });
-      }, err => {
-        console.log('err: ', err);
-      })
-    }, (err) => {
-      console.log('err: ', err);
-    });
+      //const oneFile = await this.file.resolveLocalFilesystemUrl(imageData)
+      // Convert the File to an ArrayBuffer for upload
+      //const realFile = await this.file.readAsArrayBuffer(this.file.tempDirectory, oneFile.name)
+      let type = 'jpg';
+      let newName = 'image-' + new Date().getTime() + '.' + type;
+      this.images.push({
+        key: newName,
+        url://`${this.file.tempDirectory}/${oneFile.name}`
+          this.sanitize(unsafefileName),//
+          //tempfileName
+      });
+      //loading.dismiss();
+    } catch (err) {
+      console.log('err capture image: ', err);
+    }
   }
+  sanitize(imageUrl: string): SafeUrl {
+    //return imageUrl
+    const safeUrl = this.sanitizer.bypassSecurityTrustUrl(imageUrl);
+    return safeUrl;
+}
 
   deleteImage(index) {
     this.images.splice(index, 1);

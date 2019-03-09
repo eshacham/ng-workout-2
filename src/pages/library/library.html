@@ -17,7 +17,7 @@
 
   <ion-list>
     <ion-card *ngFor="let img of images; let i = index">
-      <img [src]="img.tmepPath">
+      <img [src]="img.url">
       <button ion-button full color="danger" [style.margin]="0"
           *ngIf="edit" (click)="deleteImage(i)">
         <ion-icon name="trash"></ion-icon>
